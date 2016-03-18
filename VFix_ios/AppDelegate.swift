@@ -12,16 +12,23 @@ import FBSDKCoreKit
 import Fabric
 import TwitterKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
 //        userDefa ults.stringForKey("email")
 //        userDefaults.stringForKey("password")
+        
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            print("User has already logged in")
+            let vc = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")
+            window?.rootViewController = vc
+        }
+        
         Fabric.with([Twitter.self])
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

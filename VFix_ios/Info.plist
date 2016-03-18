@@ -24,6 +24,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1699978573612780</string>
+                <string>fbauth2</string>
 			</array>
 		</dict>
 	</array>
@@ -54,7 +55,7 @@
 	<string>VFix</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>fbauth2</string>
+    <string>fbauth2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

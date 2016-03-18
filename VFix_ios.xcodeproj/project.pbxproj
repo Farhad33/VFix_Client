@@ -175,7 +175,7 @@
 				TargetAttributes = {
 					1C65AE2B1C76860500D87EE0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = QCQ5GVBW7F;
+						DevelopmentTeam = 93KB3N7G53;
 					};
 				};
 			};
@@ -394,6 +394,7 @@
 			baseConfigurationReference = D79508CD44A82EF4A5F68770 /* Pods-VFix_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -410,6 +411,7 @@
 			baseConfigurationReference = 5E26A602813DBDE5AECC82FD /* Pods-VFix_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

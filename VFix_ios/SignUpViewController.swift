@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var TwitterLabel: UIButton!
     var username: String = ""
     var password: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      //   self.navigationController?.navigationBarHidden = false
@@ -40,6 +41,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 NSLog("Login error: %@", error!.localizedDescription)
             }
         }
+        
         LogInButton.center.x = view.center.x
         LogInButton.center.y = view.center.y+220
         let View = LogInButton.subviews.last! as UIView
@@ -102,12 +104,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User logged out")
     }
-    
-    
-    
-    
-    
-    
     
 }
 //    struct TwitterAccount:ReadableSecureStorable, CreateableSecureStorable {
