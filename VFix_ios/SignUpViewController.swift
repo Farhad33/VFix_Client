@@ -26,45 +26,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
      //   self.navigationController?.navigationBarHidden = false
         
-        // implement Twitter Login
-        let LogInButton = TWTRLogInButton { (session, error) in
-            if let unwrappedSession = session {
-                let alert = UIAlertController(title: "Logged In",
-                    message: "User \(unwrappedSession.userName) has logged in",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.performSegueWithIdentifier("showNew", sender: self)
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                NSLog("Login error: %@", error!.localizedDescription)
-            }
-        }
-        LogInButton.center.x = view.center.x
-        LogInButton.center.y = view.center.y+220
-        let View = LogInButton.subviews.last! as UIView
-        let label = View.subviews.first as! UILabel
-        label.text = "       Log in with Twitter              "
-        self.view.addSubview(LogInButton)
-        
-        
-        // implement Facebook Login
-        if FBSDKAccessToken.currentAccessToken() == nil {
-            print("Not logged in")
-        } else {
-            print("Logged in")
-        }
-        
-        let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        // loginButton.center = self.view.center
-        loginButton.frame.size.height = 40
-        loginButton.frame.size.width = 280
-        loginButton.center.x = view.center.x
-        loginButton.center.y = view.center.y+170
-        loginButton.delegate = self
-        
-        self.view.addSubview(loginButton)
+        ImplementTwitterSignUp()
+        ImplementFacebookSignUp()
 
         
         
@@ -84,6 +47,54 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // implement Twitter Sign Up
+    func ImplementTwitterSignUp(){
+    let TwSignUpButton = TWTRLogInButton { (session, error) in
+        if let unwrappedSession = session {
+            let alert = UIAlertController(title: "Logged In",
+                message: "User \(unwrappedSession.userName) has logged in",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.performSegueWithIdentifier("showNew", sender: self)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            NSLog("Login error: %@", error!.localizedDescription)
+        }
+    }
+    TwSignUpButton.center.x = view.center.x
+    TwSignUpButton.center.y = view.center.y+220
+    let View = TwSignUpButton.subviews.last! as UIView
+    let label = View.subviews.first as! UILabel
+    label.text = "       Sign Up with Twitter            "
+    self.view.addSubview(TwSignUpButton)
+    }
+    
+    
+    // implement Facebook Sign Up
+    func ImplementFacebookSignUp(){
+        if FBSDKAccessToken.currentAccessToken() == nil {
+            print("Not logged in")
+        } else {
+            print("Logged in")
+        }
+    
+        let FbSignUpButton = FBSDKLoginButton()
+        FbSignUpButton.readPermissions = ["public_profile", "email", "user_friends"]
+    // loginButton.center = self.view.center
+        FbSignUpButton.frame.size.height = 40
+        FbSignUpButton.frame.size.width = 280
+        FbSignUpButton.center.x = view.center.x
+        FbSignUpButton.center.y = view.center.y+170
+        FbSignUpButton.delegate = self
+        
+        let titleText = NSAttributedString(string: "Sign Up with Facebook")
+        FbSignUpButton.setAttributedTitle(titleText, forState: UIControlState.Normal)
+    
+        self.view.addSubview(FbSignUpButton)
     }
     
     
