@@ -12,7 +12,13 @@
 		1A2F45281C988AA700A2CE25 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */; };
 		1A2F45291C988AA700A2CE25 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45251C988AA700A2CE25 /* TwitterCore.framework */; };
 		1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A58B0321C9B5537006F0FBB /* LogInViewController.swift */; };
-		1ACDFCFB1C98C3EA00AA4EC9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDFCFA1C98C3EA00AA4EC9 /* MenuViewController.swift */; };
+		1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */; };
+		1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */; };
+		1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */; };
+		1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */; };
+		1AC98BD51CA210CE00680A79 /* MenuNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */; };
+		1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */; };
+		1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */; };
 		1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C65AE2F1C76860500D87EE0 /* AppDelegate.swift */; };
 		1C65AE351C76860500D87EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C65AE331C76860500D87EE0 /* Main.storyboard */; };
 		1C65AE371C76860500D87EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C65AE361C76860500D87EE0 /* Assets.xcassets */; };
@@ -31,7 +37,13 @@
 		1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		1A2F45251C988AA700A2CE25 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		1A58B0321C9B5537006F0FBB /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		1ACDFCFA1C98C3EA00AA4EC9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
+		1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
+		1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavViewController.swift; sourceTree = "<group>"; };
+		1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		1C65AE2C1C76860500D87EE0 /* VFix_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VFix_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C65AE2F1C76860500D87EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C65AE341C76860500D87EE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AC98BCB1CA1D22100680A79 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */,
+				1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */,
+				1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */,
+				1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */,
+				1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */,
+				1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */,
+				1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		1C65AE231C76860500D87EE0 = {
 			isa = PBXGroup;
 			children = (
@@ -92,9 +118,9 @@
 		1C65AE2E1C76860500D87EE0 /* VFix_ios */ = {
 			isa = PBXGroup;
 			children = (
+				1AC98BCB1CA1D22100680A79 /* Menu */,
 				1C93CAAD1C7FAD5800B43CB3 /* SignUp.LogIn */,
 				1C93CAAA1C7F998A00B43CB3 /* ContainerViewController.swift */,
-				1ACDFCFA1C98C3EA00AA4EC9 /* MenuViewController.swift */,
 				1C93CAAC1C7FAD2B00B43CB3 /* PageViewController */,
 				1C65AE2F1C76860500D87EE0 /* AppDelegate.swift */,
 				1C65AE331C76860500D87EE0 /* Main.storyboard */,
@@ -278,11 +304,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C65AE421C768E0E00D87EE0 /* VFixPageViewController.swift in Sources */,
-				1ACDFCFB1C98C3EA00AA4EC9 /* MenuViewController.swift in Sources */,
+				1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */,
+				1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */,
+				1AC98BD51CA210CE00680A79 /* MenuNavViewController.swift in Sources */,
 				1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */,
 				1C93CAAB1C7F998A00B43CB3 /* ContainerViewController.swift in Sources */,
+				1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */,
+				1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */,
 				1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */,
+				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */,
+				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

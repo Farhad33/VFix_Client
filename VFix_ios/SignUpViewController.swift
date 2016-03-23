@@ -20,8 +20,11 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var forgotLabel: UILabel!
     @IBOutlet weak var FacebookLabel: UIButton!
     @IBOutlet weak var TwitterLabel: UIButton!
+    
     var username: String = ""
     var password: String = ""
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      //   self.navigationController?.navigationBarHidden = false
@@ -37,7 +40,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         username = emailText.text!
         password = passwordText.text!
-        self.performSegueWithIdentifier("showNew", sender: self)
+    //    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.BuildUserInterface()
+      //  self.performSegueWithIdentifier("showNew", sender: self)
         
 //        var x = emailText.text
 //        userDefaults.set
@@ -59,7 +64,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 preferredStyle: UIAlertControllerStyle.Alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.performSegueWithIdentifier("showNew", sender: self)
+     //       var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            self.appDelegate.BuildUserInterface()
+            // self.performSegueWithIdentifier("showNew", sender: self)
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             NSLog("Login error: %@", error!.localizedDescription)
@@ -102,7 +109,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if error == nil {
             print("Login successful")
-            self.performSegueWithIdentifier("showNew", sender: self)
+    //        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.BuildUserInterface()
+            //  self.performSegueWithIdentifier("showNew", sender: self)
             
         } else {
             print(error.localizedDescription)

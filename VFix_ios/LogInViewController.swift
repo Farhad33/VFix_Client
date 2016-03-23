@@ -13,6 +13,8 @@ import TwitterKit
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var signUpWithEmail: UIButton!
@@ -46,7 +48,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
+            //    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                self.appDelegate.BuildUserInterface()
+                // self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
                 NSLog("Login error: %@", error!.localizedDescription)
@@ -86,7 +90,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if error == nil {
             print("Login successful")
-            self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
+       //     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.BuildUserInterface()
+           // self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
             
         } else {
             print(error.localizedDescription)

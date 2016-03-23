@@ -11,14 +11,29 @@ import UIKit
 import FBSDKCoreKit
 import Fabric
 import TwitterKit
+import MMDrawerController
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var DrawerContainer : MMDrawerController?
+    var MainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        BuildUserInterface()
+        
+        
+        //**************
+        
+                var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
+                var ContainerPageNav = UINavigationController(rootViewController: ContainerPage)
+//                DrawerContainer!.centerViewController = ContainerPageNav
+//                DrawerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+         window?.rootViewController = ContainerPageNav as UINavigationController
+        
+        //**************
         
 //        userDefa ults.stringForKey("email")
 //        userDefaults.stringForKey("password")
@@ -52,6 +67,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func BuildUserInterface(){
+       
+        var MainPage: MainViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        var LeftSideMenu: LeftMenuViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("LeftMenuViewController") as! LeftMenuViewController
+        var MainPageNav = UINavigationController(rootViewController: MainPage)
+        var LeftSideMenuNav = UINavigationController(rootViewController: LeftSideMenu)
+        DrawerContainer = MMDrawerController(centerViewController: MainPage, leftDrawerViewController: LeftSideMenuNav)
+        DrawerContainer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
+        DrawerContainer?.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.PanningCenterView
+        
+        //**************
+        
+//        var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
+//        var ContainerPageNav = UINavigationController(rootViewController: ContainerPage)
+//        DrawerContainer!.centerViewController = ContainerPageNav
+//        DrawerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+        
+        //**************
+        
+        window?.rootViewController = DrawerContainer
+        // ! as UIViewController
+        
     }
 
 

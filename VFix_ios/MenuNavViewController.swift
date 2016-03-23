@@ -1,14 +1,14 @@
 //
-//  MenuViewController.swift
+//  MenuNavViewController.swift
 //  VFix_ios
 //
-//  Created by Youcef Iratni on 3/15/16.
+//  Created by Youcef Iratni on 3/22/16.
 //  Copyright © 2016 Majid Rahimi. All rights reserved.
 //
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuNavViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
