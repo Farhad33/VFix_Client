@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBarHidden = true
         
         ImplementTwitterSignUp()
         ImplementFacebookSignUp()

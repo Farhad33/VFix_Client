@@ -12,7 +12,7 @@ import MMDrawerController
 class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var MenuItems: [String] = ["Home","Settings","Appointments","Receipts","Support","Log Out"]
+    var MenuItems: [String] = ["Home","Profile","Appointments","Receipts","Support","Log Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

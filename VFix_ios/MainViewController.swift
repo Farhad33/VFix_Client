@@ -15,11 +15,19 @@ class MainViewController: UIViewController {
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
        self.navigationController?.navigationBarHidden = false
+     
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
+    // override func view
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

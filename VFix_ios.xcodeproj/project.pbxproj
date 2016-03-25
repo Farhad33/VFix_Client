@@ -16,8 +16,8 @@
 		1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */; };
 		1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */; };
 		1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */; };
-		1AC98BD51CA210CE00680A79 /* MenuNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */; };
 		1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */; };
+		1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */; };
 		1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */; };
 		1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C65AE2F1C76860500D87EE0 /* AppDelegate.swift */; };
 		1C65AE351C76860500D87EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C65AE331C76860500D87EE0 /* Main.storyboard */; };
@@ -41,8 +41,8 @@
 		1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
-		1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNavViewController.swift; sourceTree = "<group>"; };
 		1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		1C65AE2C1C76860500D87EE0 /* VFix_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VFix_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C65AE2F1C76860500D87EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */,
 				1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */,
 				1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */,
-				1AC98BD41CA210CE00680A79 /* MenuNavViewController.swift */,
+				1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -306,7 +306,6 @@
 				1C65AE421C768E0E00D87EE0 /* VFixPageViewController.swift in Sources */,
 				1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */,
 				1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */,
-				1AC98BD51CA210CE00680A79 /* MenuNavViewController.swift in Sources */,
 				1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */,
 				1C93CAAB1C7F998A00B43CB3 /* ContainerViewController.swift in Sources */,
 				1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */,
@@ -314,6 +313,7 @@
 				1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */,
 				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */,
+				1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */,
 				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
