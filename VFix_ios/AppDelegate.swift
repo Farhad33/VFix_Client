@@ -20,9 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var DrawerContainer : MMDrawerController?
     var MainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    var userDefault = NSUserDefaults.standardUserDefaults()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuildUserInterface()
+        userDefaults.synchronize()
         
         
         //**************
@@ -75,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var LeftSideMenu: LeftMenuViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("LeftMenuViewController") as! LeftMenuViewController
         var MainPageNav = UINavigationController(rootViewController: MainPage)
         var LeftSideMenuNav = UINavigationController(rootViewController: LeftSideMenu)
-        DrawerContainer = MMDrawerController(centerViewController: MainPage, leftDrawerViewController: LeftSideMenuNav)
+        
+        DrawerContainer = MMDrawerController(centerViewController: MainPageNav, leftDrawerViewController: LeftSideMenuNav)
         DrawerContainer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
         DrawerContainer?.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.PanningCenterView
         

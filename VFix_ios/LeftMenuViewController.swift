@@ -11,13 +11,61 @@ import MMDrawerController
 
 class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var ProfilePicImage: UIImageView!
+    @IBOutlet weak var EmailLabel: UILabel!
+    
+    
+    
+    
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var MenuItems: [String] = ["Home","Profile","Appointments","Receipts","Support","Log Out"]
+    var defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       // self.tableView.scrollEnabled = false
+        self.navigationController?.navigationBarHidden = true
+       self.view?.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
+      
+        NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        EmailLabel.text = defaults.stringForKey("email")
+        if let imgData = defaults.objectForKey("image") as? NSData
+        {
+            if let image = UIImage(data: imgData)
+            {
+                //set image in UIImageView imgSignature
+                self.ProfilePicImage.image = image
+                //remove cache after fetching image data
+       //         defaults.removeObjectForKey("image")
+            }
+        }
+        ProfilePicImage.layer.borderWidth = 1
+        ProfilePicImage.layer.masksToBounds = false
+        ProfilePicImage.layer.borderColor = UIColor.blackColor().CGColor
+        ProfilePicImage.layer.cornerRadius = ProfilePicImage.frame.height/2
+        ProfilePicImage.clipsToBounds = true
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        EmailLabel.text = defaults.stringForKey("email")
+        if let imgData = defaults.objectForKey("image") as? NSData
+        {
+            if let image = UIImage(data: imgData)
+            {
+                //set image in UIImageView imgSignature
+                self.ProfilePicImage.image = image
+                //remove cache after fetching image data
+           //     defaults.removeObjectForKey("image")
+                
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,12 +84,14 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("LeftMenuCell", forIndexPath: indexPath) as UITableViewCell
         
         cell.textLabel?.text = MenuItems[indexPath.row]
+      //  cell.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         return cell
     }
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch(indexPath.row)
         {
         case 0:

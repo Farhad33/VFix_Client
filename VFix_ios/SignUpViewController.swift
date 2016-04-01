@@ -38,8 +38,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func onSigningUp(sender: AnyObject) {
         
-        username = emailText.text!
-        password = passwordText.text!
+    //    username = emailText.text!
+     //   password = passwordText.text!
     //    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.BuildUserInterface()
       //  self.performSegueWithIdentifier("showNew", sender: self)

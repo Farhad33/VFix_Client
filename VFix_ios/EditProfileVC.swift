@@ -10,20 +10,137 @@ import UIKit
 
 class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, UITextFieldDelegate {
     
+    
+    
+    
     var resizedImage:UIImage!
     let imagePicker = UIImagePickerController()
     var image = UIImage()
+    var defaults = NSUserDefaults.standardUserDefaults()
+    static var ProfileImg = "PROFILE_IMAGE"
 
     
-    @IBOutlet weak var CapturedPic: UIImageView!
     
+    
+    @IBOutlet weak var View1: UIView!
+    @IBOutlet weak var CapturedPic: UIImageView!
+    @IBOutlet weak var FirstNameTextField: UITextField!
+    @IBOutlet weak var LastNameTextField: UITextField!
+    @IBOutlet weak var EmailTextField: UITextField!
+    @IBOutlet weak var PhoneNumTextField: UITextField!
+    @IBOutlet weak var AddressLineOneTextField: UITextField!
+    @IBOutlet weak var AddressLineTwoTextField: UITextField!
+    @IBOutlet weak var CityTextField: UITextField!
+    @IBOutlet weak var StateTextField: UITextField!
+    @IBOutlet weak var PostalCodeTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        
+        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        
+        FirstNameTextField.text = defaults.stringForKey("firstName")
+        LastNameTextField.text = defaults.stringForKey("lastName")
+        EmailTextField.text = defaults.stringForKey("email")
+        PhoneNumTextField.text = defaults.stringForKey("phoneNumber")
+        AddressLineOneTextField.text = defaults.stringForKey("addressLine1")
+        AddressLineTwoTextField.text = defaults.stringForKey("addressLine2")
+        CityTextField.text = defaults.stringForKey("city")
+        StateTextField.text = defaults.stringForKey("state")
+        PostalCodeTextField.text = defaults.stringForKey("postalCode")
+        
+        if let imgData = defaults.objectForKey("image") as? NSData
+        {
+            if let image = UIImage(data: imgData)
+            {
+                self.CapturedPic.image = image
+         //       defaults.removeObjectForKey("image")
+            }
+        }
+        CapturedPic.layer.borderWidth = 1
+        CapturedPic.layer.masksToBounds = false
+        CapturedPic.layer.borderColor = UIColor.blackColor().CGColor
+        CapturedPic.layer.cornerRadius = CapturedPic.frame.height/2
+        CapturedPic.clipsToBounds = true
+        
+        
+//        if let imageData = defaults.objectForKey(EditProfileVC.ProfileImg) as? NSData {
+//            let storedImage = UIImage.init(data: imageData)
+//            EditProfileVC.ProfileImg.image = storedImage
+//        }
+        
+        
+        
+        
+ //       CapturedPic.image = defaults.setObject( , forKey: "profileJPG")
+      
+        // CapturedPic.image = defaults.setObject(ProfileJPG , forKey: "profileJPG")
+     
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
+//    override func viewWillDisappear(animated: Bool)
+//    {
+//        let FirstName = FirstNameTextField.text
+//        let LastName = LastNameTextField.text
+//        let Email = EmailTextField.text
+//        let PhoneNumber = PhoneNumTextField.text
+//        let AddressLine1 = AddressLineOneTextField.text
+//        let AddressLine2 = AddressLineTwoTextField.text
+//        let City = CityTextField.text
+//        let State = StateTextField.text
+//        let PostalCode = PostalCodeTextField.text
+//        let ProfileJPEG: UIImage = CapturedPic.image!
+//        let ProfileJPG = UIImageJPEGRepresentation(ProfileJPEG, 1)! as NSData
+//        
+//        defaults.setObject(FirstName, forKey: "ffirstName")
+//        defaults.setObject(LastName, forKey: "llastName")
+//        defaults.setObject(Email, forKey: "eemail")
+//        defaults.setObject(PhoneNumber, forKey: "pphoneNumber")
+//        defaults.setObject(AddressLine1, forKey: "aaddressLine1")
+//        defaults.setObject(AddressLine2, forKey: "addressLine2")
+//        defaults.setObject(City, forKey: "city")
+//        defaults.setObject(State, forKey: "state")
+//        defaults.setObject(PostalCode, forKey: "postalCode")
+//        defaults.setObject(ProfileJPG, forKey: "image")
+//        
+//        userDefaults.synchronize()
+//    }
+    
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        FirstNameTextField.text = defaults.stringForKey("firstName")
+        LastNameTextField.text = defaults.stringForKey("lastName")
+        EmailTextField.text = defaults.stringForKey("email")
+        PhoneNumTextField.text = defaults.stringForKey("phoneNumber")
+        AddressLineOneTextField.text = defaults.stringForKey("addressLine1")
+        AddressLineTwoTextField.text = defaults.stringForKey("addressLine2")
+        CityTextField.text = defaults.stringForKey("city")
+        StateTextField.text = defaults.stringForKey("state")
+        PostalCodeTextField.text = defaults.stringForKey("postalCode")
+        if let imgData = defaults.objectForKey("image") as? NSData
+        {
+            if let image = UIImage(data: imgData)
+            {
+                self.CapturedPic.image = image
+            //    defaults.removeObjectForKey("image")
+            }
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -98,12 +215,25 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-            image = originalImage
+            if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage{
+                defaults.removeObjectForKey("image")
+            }
+                image = originalImage
+            
             saveToCamera(image)
             dismissViewControllerAnimated(true, completion: nil)
             self.CapturedPic.image = image
     }
+//    func imagePickerController(picker: UIImagePickerController,
+//        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+//            image = originalImage
+//            saveToCamera(image)
+//            dismissViewControllerAnimated(true, completion: nil)
+//            self.CapturedPic.image = image
+//    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -121,6 +251,50 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         UIGraphicsEndImageContext()
         return newImage
     }
+    
+//    func SaveSelectedIamge(image: UIImage){
+//        let ProfileJPG = UIImageJPEGRepresentation(image, 100)
+//        defaults.setObject(ProfileJPG, forKey: EditProfileVC.ProfileImg)
+//    }
+    
+    @IBAction func ChangePicture(sender: AnyObject) {
+            UIView.animateWithDuration(0.5, animations: {
+                self.View1.center.y = self.view.bounds.height / 1.12            })
+        }
+    
+    
+    @IBAction func OnSave(sender: AnyObject) {
+        let FirstName = FirstNameTextField.text
+        let LastName = LastNameTextField.text
+        let Email = EmailTextField.text
+        let PhoneNumber = PhoneNumTextField.text
+        let AddressLine1 = AddressLineOneTextField.text
+        let AddressLine2 = AddressLineTwoTextField.text
+        let City = CityTextField.text
+        let State = StateTextField.text
+        let PostalCode = PostalCodeTextField.text
+        let ProfileJPEG: UIImage = CapturedPic.image!
+        let ProfileJPG = UIImageJPEGRepresentation(ProfileJPEG, 1)! as NSData
+        
+        defaults.setObject(FirstName, forKey: "firstName")
+        defaults.setObject(LastName, forKey: "lastName")
+        defaults.setObject(Email, forKey: "email")
+        defaults.setObject(PhoneNumber, forKey: "phoneNumber")
+        defaults.setObject(AddressLine1, forKey: "addressLine1")
+        defaults.setObject(AddressLine2, forKey: "addressLine2")
+        defaults.setObject(City, forKey: "city")
+        defaults.setObject(State, forKey: "state")
+        defaults.setObject(PostalCode, forKey: "postalCode")
+        defaults.setObject(ProfileJPG, forKey: "image")
+        
+        //       SaveSelectedIamge(ProfileJPEG)
+        
+        userDefaults.synchronize()
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
     
 
