@@ -13,11 +13,18 @@ import TwitterKit
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var signUpWithEmail: UIButton!
+    @IBOutlet weak var LogWithEmail: UIButton!
+    
+    
+ //   var username: String?
+//    var password: String = ""
+//    var checkUser: String = ""
+//    var checkPass: String = " "
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var defaults = NSUserDefaults.standardUserDefaults()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,15 +111,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User logged out")
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    @IBAction func onLogging(sender: AnyObject) {
+        let username = emailText.text!
+        let password = passwordText.text!
+        let checkUser = defaults.stringForKey("email")!
+        let checkPass = defaults.stringForKey("password")!
+        if username == checkUser && checkPass == password {
+            appDelegate.BuildUserInterface()
+        } else{
+            print("username or password don't exist")
+        }
+        
     }
-    */
+    
     
 }

@@ -23,7 +23,10 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var username: String = ""
     var password: String = ""
+    var checkUser: String = ""
+    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +41,22 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func onSigningUp(sender: AnyObject) {
         
-    //    username = emailText.text!
-     //   password = passwordText.text!
-    //    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.BuildUserInterface()
+        username = emailText.text!
+        password = passwordText.text!
+        checkUser = defaults.stringForKey("email")!
+   //     checkPass = defaults.stringForKey("password")!
+        if username == checkUser {
+            print("username exist")
+        } else{
+            defaults.setObject(username, forKey: "email")
+            defaults.setObject(password, forKey: "password")
+            appDelegate.BuildUserInterface()
+        }
+        
+     
+  
+       
       //  self.performSegueWithIdentifier("showNew", sender: self)
-        
-//        var x = emailText.text
-//        userDefaults.set
-        
     }
 
     override func didReceiveMemoryWarning() {

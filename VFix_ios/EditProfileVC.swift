@@ -41,6 +41,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.View1.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         
         
         FirstNameTextField.text = defaults.stringForKey("firstName")
@@ -89,47 +90,47 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     
     
     
-//    override func viewWillDisappear(animated: Bool)
-//    {
-//        let FirstName = FirstNameTextField.text
-//        let LastName = LastNameTextField.text
-//        let Email = EmailTextField.text
-//        let PhoneNumber = PhoneNumTextField.text
-//        let AddressLine1 = AddressLineOneTextField.text
-//        let AddressLine2 = AddressLineTwoTextField.text
-//        let City = CityTextField.text
-//        let State = StateTextField.text
-//        let PostalCode = PostalCodeTextField.text
+    override func viewWillDisappear(animated: Bool)
+    {
+        let FirstName = FirstNameTextField.text
+        let LastName = LastNameTextField.text
+        let Email = EmailTextField.text
+        let PhoneNumber = PhoneNumTextField.text
+        let AddressLine1 = AddressLineOneTextField.text
+        let AddressLine2 = AddressLineTwoTextField.text
+        let City = CityTextField.text
+        let State = StateTextField.text
+        let PostalCode = PostalCodeTextField.text
 //        let ProfileJPEG: UIImage = CapturedPic.image!
 //        let ProfileJPG = UIImageJPEGRepresentation(ProfileJPEG, 1)! as NSData
-//        
-//        defaults.setObject(FirstName, forKey: "ffirstName")
-//        defaults.setObject(LastName, forKey: "llastName")
-//        defaults.setObject(Email, forKey: "eemail")
-//        defaults.setObject(PhoneNumber, forKey: "pphoneNumber")
-//        defaults.setObject(AddressLine1, forKey: "aaddressLine1")
-//        defaults.setObject(AddressLine2, forKey: "addressLine2")
-//        defaults.setObject(City, forKey: "city")
-//        defaults.setObject(State, forKey: "state")
-//        defaults.setObject(PostalCode, forKey: "postalCode")
-//        defaults.setObject(ProfileJPG, forKey: "image")
-//        
-//        userDefaults.synchronize()
-//    }
+        
+        defaults.setObject(FirstName, forKey: "ffirstName")
+        defaults.setObject(LastName, forKey: "llastName")
+        defaults.setObject(Email, forKey: "eemail")
+        defaults.setObject(PhoneNumber, forKey: "pphoneNumber")
+        defaults.setObject(AddressLine1, forKey: "aaddressLine1")
+        defaults.setObject(AddressLine2, forKey: "aaddressLine2")
+        defaults.setObject(City, forKey: "ccity")
+        defaults.setObject(State, forKey: "sstate")
+        defaults.setObject(PostalCode, forKey: "ppostalCode")
+      //  defaults.setObject(ProfileJPG, forKey: "image")
+        
+        userDefaults.synchronize()
+    }
     
     
     
     
     override func viewWillAppear(animated: Bool) {
-        FirstNameTextField.text = defaults.stringForKey("firstName")
-        LastNameTextField.text = defaults.stringForKey("lastName")
-        EmailTextField.text = defaults.stringForKey("email")
-        PhoneNumTextField.text = defaults.stringForKey("phoneNumber")
-        AddressLineOneTextField.text = defaults.stringForKey("addressLine1")
-        AddressLineTwoTextField.text = defaults.stringForKey("addressLine2")
-        CityTextField.text = defaults.stringForKey("city")
-        StateTextField.text = defaults.stringForKey("state")
-        PostalCodeTextField.text = defaults.stringForKey("postalCode")
+        FirstNameTextField.text = defaults.stringForKey("ffirstName")
+        LastNameTextField.text = defaults.stringForKey("llastName")
+        EmailTextField.text = defaults.stringForKey("eemail")
+        PhoneNumTextField.text = defaults.stringForKey("pphoneNumber")
+        AddressLineOneTextField.text = defaults.stringForKey("aaddressLine1")
+        AddressLineTwoTextField.text = defaults.stringForKey("aaddressLine2")
+        CityTextField.text = defaults.stringForKey("ccity")
+        StateTextField.text = defaults.stringForKey("sstate")
+        PostalCodeTextField.text = defaults.stringForKey("ppostalCode")
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)

@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BuildUserInterface()
         userDefaults.synchronize()
         
-        
         //**************
         
                 var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
