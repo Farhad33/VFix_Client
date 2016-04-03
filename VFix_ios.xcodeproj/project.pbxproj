@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0F9D091CB1BE34002D8780 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */; };
 		1A2F45261C988AA700A2CE25 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45221C988AA700A2CE25 /* Fabric.framework */; };
 		1A2F45271C988AA700A2CE25 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45231C988AA700A2CE25 /* TwitterKit.framework */; };
 		1A2F45281C988AA700A2CE25 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1A2F45221C988AA700A2CE25 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1A2F45231C988AA700A2CE25 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				639842C01C8F8DF100453C31 /* FBSDKCoreKit.framework in Frameworks */,
 				639842C21C8F8DFC00453C31 /* FBSDKLoginKit.framework in Frameworks */,
 				1A2F45261C988AA700A2CE25 /* Fabric.framework in Frameworks */,
+				1A0F9D091CB1BE34002D8780 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +103,7 @@
 		1C65AE231C76860500D87EE0 = {
 			isa = PBXGroup;
 			children = (
+				1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */,
 				1A2F45221C988AA700A2CE25 /* Fabric.framework */,
 				1A2F45231C988AA700A2CE25 /* TwitterKit.framework */,
 				1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */,

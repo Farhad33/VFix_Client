@@ -10,6 +10,8 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
+import Fabric
+import Crashlytics
 
 
 class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -34,24 +36,48 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         ImplementTwitterSignUp()
         ImplementFacebookSignUp()
+        
+        if defaults.stringForKey("email") != nil{
+            emailText.text = defaults.stringForKey("email")
+        }
 
         
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if defaults.stringForKey("email") != nil{
+            emailText.text = defaults.stringForKey("email")
+        }
+    }
+    
     @IBAction func onSigningUp(sender: AnyObject) {
         
-        let username = emailText.text!
-        let password = passwordText.text!
+        var username = emailText.text
+        var password = passwordText.text
         if defaults.stringForKey("email") == nil {
             defaults.setObject(username, forKey: "email")
         } else {
          checkUser = defaults.stringForKey("email")
         }
    //     checkPass = defaults.stringForKey("password")!
-        if username == checkUser {
+        if emailText.text == "" || emailText.text == nil {
+            var refreshAlert = UIAlertController(title: "Error", message: "Please Insert Email", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else if username == checkUser {
+            var refreshAlert = UIAlertController(title: "Error", message: "Username Exist", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
             print("username exist")
-        } else{
+        } else if passwordText.text == nil || passwordText.text == "" {
+            var refreshAlert = UIAlertController(title: "Error", message: "Password Requiered", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else {
             defaults.setObject(username, forKey: "email")
             defaults.setObject(password, forKey: "password")
             appDelegate.BuildUserInterface()
@@ -79,6 +105,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
             )
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
      //       var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            self.appDelegate.logUser()
             self.appDelegate.BuildUserInterface()
             // self.performSegueWithIdentifier("showNew", sender: self)
             self.presentViewController(alert, animated: true, completion: nil)

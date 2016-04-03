@@ -34,6 +34,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         ImplementTwitterLogin()
         ImplementFacebookLogin()
         
+        
+        if defaults.stringForKey("email") != nil{
+            emailText.text = defaults.stringForKey("email")
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -45,6 +50,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         ImplementFacebookLogin()
         ImplementTwitterLogin()
+        
+        if defaults.stringForKey("email") != nil{
+            emailText.text = defaults.stringForKey("email")
+        }
     }
     
     // implement Twitter Login
@@ -113,23 +122,40 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func onLogging(sender: AnyObject) {
-        if defaults.stringForKey("email") == nil {
-            emailText.backgroundColor = UIColor.redColor()
-            emailText.placeholder = "Field Required"
-            print("please Sign UP")
-        } else {
-            let username = emailText.text!
-            let password = passwordText.text!
-            let checkUser = defaults.stringForKey("email")!
-            let checkPass = defaults.stringForKey("password")!
-            if username == checkUser && checkPass == password {
+        let username = emailText.text
+        let password = passwordText.text
+        var checkUser = defaults.stringForKey("email")
+        let checkPass = defaults.stringForKey("password")
+        
+        if emailText.text == "" || emailText.text == nil {
+            var refreshAlert = UIAlertController(title: "Error", message: "Please Insert Email", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else if passwordText.text == "" || passwordText.text == nil {
+            var refreshAlert = UIAlertController(title: "Error", message: "Password Required", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+//        } else if checkUser == nil {
+//            emailText.backgroundColor = UIColor.redColor()
+//            emailText.placeholder = "Field Required"
+//            print("please Sign UP")
+        } else if username == checkUser && checkPass == password {
                 appDelegate.BuildUserInterface()
-            } else{
-                print("username or password don't exist")
-            }
+        } else if username != checkUser {
+                var refreshAlert = UIAlertController(title: "Error", message: "Username Don't Exist \n Please Sign Up", preferredStyle: UIAlertControllerStyle.Alert)
+                refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                }))
+                presentViewController(refreshAlert, animated: true, completion: nil)
+        } else {
+            var refreshAlert = UIAlertController(title: "Error", message: "Wrong Password \n Please Enter Correct Password", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        }
         }
         
-    }
-    
-    
 }
+    
+    

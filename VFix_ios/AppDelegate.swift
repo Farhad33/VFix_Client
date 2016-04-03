@@ -10,6 +10,7 @@ let userDefaults = NSUserDefaults.standardUserDefaults()
 import UIKit
 import FBSDKCoreKit
 import Fabric
+import Crashlytics
 import TwitterKit
 import MMDrawerController
 
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.stringForKey("city")
         defaults.stringForKey("state")
         defaults.stringForKey("postalCode")
+        defaults.stringForKey("password")
         
         //**************
         
@@ -50,6 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        userDefa ults.stringForKey("email")
 //        userDefaults.stringForKey("password")
         Fabric.with([Twitter.self])
+        Fabric.with([Twitter.self, Crashlytics.self])
+        // TODO: Move this to where you establish a user session
+        self.logUser()
+
+
 
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -105,6 +112,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ! as UIViewController
         
     }
+    
+    func logUser() {
+        // TODO: Use the current user's information
+        // You can call any combination of these three methods
+        Crashlytics.sharedInstance().setUserEmail("user@fabric.io")
+        Crashlytics.sharedInstance().setUserIdentifier("12345")
+        Crashlytics.sharedInstance().setUserName("Test User")
+        let GGGG = Crashlytics.sharedInstance().setUserEmail("user@fabric.io")
+        print("Your Email Is: \(GGGG)")
+    }
+
 
 
 }
