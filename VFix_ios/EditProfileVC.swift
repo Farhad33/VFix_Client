@@ -54,6 +54,9 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         StateTextField.text = defaults.stringForKey("state")
         PostalCodeTextField.text = defaults.stringForKey("postalCode")
         
+        if CapturedPic.image == nil {
+            CapturedPic.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -61,6 +64,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
                 self.CapturedPic.image = image
          //       defaults.removeObjectForKey("image")
             }
+        }
         }
         CapturedPic.layer.borderWidth = 1
         CapturedPic.layer.masksToBounds = false
@@ -131,6 +135,10 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         CityTextField.text = defaults.stringForKey("ccity")
         StateTextField.text = defaults.stringForKey("sstate")
         PostalCodeTextField.text = defaults.stringForKey("ppostalCode")
+        
+        if CapturedPic.image == nil {
+            CapturedPic.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -138,6 +146,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
                 self.CapturedPic.image = image
             //    defaults.removeObjectForKey("image")
             }
+        }
         }
     }
     

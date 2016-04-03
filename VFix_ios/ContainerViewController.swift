@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMDrawerController
 
 class ContainerViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var signUpButtom: UIButton!
     @IBOutlet weak var loginButtom: UIButton!
     
+    
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var containerPageViewController: VFixPageViewController? {
         didSet {
             containerPageViewController?.vfixDelegate = self
@@ -60,6 +63,14 @@ extension ContainerViewController: VFixPageViewControllerDelegate {
         didUpdatePageIndex index: Int){
         pageControl.currentPage = index
     }
+    
+    
+    @IBAction func LogInAsGuest(sender: AnyObject) {
+        appDelegate.BuildUserInterface()
+    }
+    
+    
+    
 
 
 }

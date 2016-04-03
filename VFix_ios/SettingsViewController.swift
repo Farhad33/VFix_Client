@@ -35,14 +35,62 @@ class SettingsViewController: UIViewController {
         self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        EmailLabel.text = "    " + defaults.stringForKey("email")!
-        PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
-        AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
-        AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
-        CityLabel.text = "    " + defaults.stringForKey("city")!
-        StateLabel.text = "    " + defaults.stringForKey("state")!
-        PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
+        if defaults.stringForKey("firstName") == nil {
+            NameLabel.text = ""
+        } else {
+            NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        }
+        
+        // NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        
+        if defaults.stringForKey("email") == nil {
+            EmailLabel.text = ""
+        } else {
+            EmailLabel.text = "    " + defaults.stringForKey("email")!
+        }
+        
+     //   EmailLabel.text = "    " + defaults.stringForKey("email")!
+        if defaults.stringForKey("phoneNumber") == nil {
+            PhoneNumLabel.text = " "
+        } else {
+            PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
+        }
+        
+        if defaults.stringForKey("addressLine1") == nil {
+            AddressLineOneLabel.text = " "
+        } else {
+            AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
+        }
+        
+        if defaults.stringForKey("addressLine2") == nil {
+            AddressLineTwoLabel.text = " "
+        } else {
+            AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
+        }
+        
+        if defaults.stringForKey("city") == nil {
+            CityLabel.text = " "
+        } else {
+            CityLabel.text = "    " + defaults.stringForKey("city")!
+        }
+        
+        if defaults.stringForKey("state") == nil {
+            StateLabel.text = " "
+        } else {
+            StateLabel.text = "    " + defaults.stringForKey("state")!
+        }
+        
+        if defaults.stringForKey("postalCode") == nil {
+            PostalCodeLabel.text = " "
+        } else {
+            PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
+        }
+        
+        
+        
+        if ProfilePicImage.image == nil {
+            ProfilePicImage.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -52,6 +100,7 @@ class SettingsViewController: UIViewController {
                 //remove cache after fetching image data
           //      defaults.removeObjectForKey("image")
             }
+        }
         }
         ProfilePicImage.layer.borderWidth = 1
         ProfilePicImage.layer.masksToBounds = false
@@ -65,14 +114,70 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        EmailLabel.text = "    " + defaults.stringForKey("email")!
-        PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
-        AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
-        AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
-        CityLabel.text = "    " + defaults.stringForKey("city")!
-        StateLabel.text = "    " + defaults.stringForKey("state")!
-        PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
+        
+        
+        if defaults.stringForKey("firstName") == nil {
+            NameLabel.text = ""
+        } else {
+            NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        }
+        
+        // NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        if defaults.stringForKey("email") == nil {
+            EmailLabel.text = ""
+        } else {
+            EmailLabel.text = "    " + defaults.stringForKey("email")!
+        }
+        if defaults.stringForKey("phoneNumber") == nil {
+            PhoneNumLabel.text = " "
+        } else {
+            PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
+        }
+        
+        if defaults.stringForKey("addressLine1") == nil {
+            AddressLineOneLabel.text = " "
+        } else {
+            AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
+        }
+        
+        if defaults.stringForKey("addressLine2") == nil {
+            AddressLineTwoLabel.text = " "
+        } else {
+            AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
+        }
+        
+        if defaults.stringForKey("city") == nil {
+            CityLabel.text = " "
+        } else {
+            CityLabel.text = "    " + defaults.stringForKey("city")!
+        }
+        
+        if defaults.stringForKey("state") == nil {
+            StateLabel.text = " "
+        } else {
+            StateLabel.text = "    " + defaults.stringForKey("state")!
+        }
+        
+        if defaults.stringForKey("postalCode") == nil {
+            PostalCodeLabel.text = " "
+        } else {
+            PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
+        }
+        
+        
+//        NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+//        EmailLabel.text = "    " + defaults.stringForKey("email")!
+//        PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
+//        AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
+//        AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
+//        CityLabel.text = "    " + defaults.stringForKey("city")!
+//        StateLabel.text = "    " + defaults.stringForKey("state")!
+//        PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
+        
+        
+        if ProfilePicImage.image == nil {
+            ProfilePicImage.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -82,6 +187,7 @@ class SettingsViewController: UIViewController {
                 //remove cache after fetching image data
              //   defaults.removeObjectForKey("image")
             }
+        }
         }
     }
 

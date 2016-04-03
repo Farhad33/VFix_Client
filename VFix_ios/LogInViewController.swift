@@ -24,6 +24,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
 //    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
+    var refreshAlert = UIAlertController(title: "Log out", message: "This action is irriversable. Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
     
     
     override func viewDidLoad() {
@@ -112,14 +113,20 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func onLogging(sender: AnyObject) {
-        let username = emailText.text!
-        let password = passwordText.text!
-        let checkUser = defaults.stringForKey("email")!
-        let checkPass = defaults.stringForKey("password")!
-        if username == checkUser && checkPass == password {
-            appDelegate.BuildUserInterface()
-        } else{
-            print("username or password don't exist")
+        if defaults.stringForKey("email") == nil {
+            emailText.backgroundColor = UIColor.redColor()
+            emailText.placeholder = "Field Required"
+            print("please Sign UP")
+        } else {
+            let username = emailText.text!
+            let password = passwordText.text!
+            let checkUser = defaults.stringForKey("email")!
+            let checkPass = defaults.stringForKey("password")!
+            if username == checkUser && checkPass == password {
+                appDelegate.BuildUserInterface()
+            } else{
+                print("username or password don't exist")
+            }
         }
         
     }

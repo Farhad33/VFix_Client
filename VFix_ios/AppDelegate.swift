@@ -20,11 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var DrawerContainer : MMDrawerController?
     var MainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    var userDefault = NSUserDefaults.standardUserDefaults()
+    var defaults = NSUserDefaults.standardUserDefaults()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuildUserInterface()
         userDefaults.synchronize()
+        
+        defaults.stringForKey("email")
+        defaults.stringForKey("password")
+        defaults.stringForKey("firstName")
+        defaults.stringForKey("lastName")
+        defaults.stringForKey("phoneNumber")
+        defaults.stringForKey("addressLine1")
+        defaults.stringForKey("addressLine2")
+        defaults.stringForKey("city")
+        defaults.stringForKey("state")
+        defaults.stringForKey("postalCode")
         
         //**************
         

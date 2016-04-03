@@ -21,10 +21,10 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var FacebookLabel: UIButton!
     @IBOutlet weak var TwitterLabel: UIButton!
     
-    var username: String = ""
-    var password: String = ""
-    var checkUser: String = ""
-    var checkPass: String = " "
+//    var username: String = ""
+//    var password: String = ""
+    var checkUser: String?
+//    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
     
@@ -41,9 +41,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBAction func onSigningUp(sender: AnyObject) {
         
-        username = emailText.text!
-        password = passwordText.text!
-        checkUser = defaults.stringForKey("email")!
+        let username = emailText.text!
+        let password = passwordText.text!
+        if defaults.stringForKey("email") == nil {
+            defaults.setObject(username, forKey: "email")
+        } else {
+         checkUser = defaults.stringForKey("email")
+        }
    //     checkPass = defaults.stringForKey("password")!
         if username == checkUser {
             print("username exist")

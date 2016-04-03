@@ -22,16 +22,23 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var MenuItems: [String] = ["Home","Profile","Appointments","Receipts","Support","Log Out"]
+    var MenuIcon: [String] = ["home.png", "Profile.png", "appointment.png", "Receipt.png", "Support.png", "exit.png"]
     var defaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.tableView.scrollEnabled = false
         self.navigationController?.navigationBarHidden = true
-       self.view?.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-      
-        NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        EmailLabel.text = defaults.stringForKey("email")
+        self.view?.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
+        if defaults.stringForKey("firstName") == nil {
+            NameLabel.text = "??????"
+        } else {
+            NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        }
+            EmailLabel.text = defaults.stringForKey("email")
+        if ProfilePicImage.image == nil {
+            ProfilePicImage.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -41,6 +48,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
                 //remove cache after fetching image data
        //         defaults.removeObjectForKey("image")
             }
+        }
         }
         ProfilePicImage.layer.borderWidth = 1
         ProfilePicImage.layer.masksToBounds = false
@@ -53,8 +61,16 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        if defaults.stringForKey("firstName") == nil {
+            NameLabel.text = "??????"
+        } else {
+            NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
+        }
         EmailLabel.text = defaults.stringForKey("email")
+        
+        if ProfilePicImage.image == nil {
+            ProfilePicImage.image = UIImage(named: "missing.png")
+        } else {
         if let imgData = defaults.objectForKey("image") as? NSData
         {
             if let image = UIImage(data: imgData)
@@ -65,6 +81,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
            //     defaults.removeObjectForKey("image")
                 
             }
+        }
         }
     }
 
@@ -81,9 +98,10 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LeftMenuCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("LeftMenuCell", forIndexPath: indexPath) as! LeftMenuCell
         
-        cell.textLabel?.text = MenuItems[indexPath.row]
+        cell.IconImage.image = UIImage(named: MenuIcon[indexPath.row])
+        cell.MenuItemLabel.text = MenuItems[indexPath.row]
       //  cell.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         return cell
     }
@@ -130,10 +148,24 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
             break
             
         case 5:
-            var MainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
-            var ContainerPageNav = UINavigationController(rootViewController: ContainerPage)
-            appDelegate.window?.rootViewController = ContainerPageNav
+            var refreshAlert = UIAlertController(title: "Log out", message: "Are You Sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+               // self.defaults.setObject(nil, forKey: "email")
+                var MainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
+                var ContainerPageNav = UINavigationController(rootViewController: ContainerPage)
+                self.appDelegate.window?.rootViewController = ContainerPageNav
+
+                
+                
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+                print("Canceled")
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+            
             break
             
         default:

@@ -44,4 +44,31 @@ class MainViewController: UIViewController {
         appDelegate.DrawerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
     
+    @IBAction func VirusRemoval(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func DiagnosticAndRepair(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func ElectricSetup(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func PcTuneUp(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func PrinterSetup(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func DataBackUp(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func WifiSolution(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    @IBAction func PcMacSupport(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
+    }
+    
+    
+    
 }
