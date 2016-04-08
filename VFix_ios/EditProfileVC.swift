@@ -128,7 +128,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     override func viewWillAppear(animated: Bool) {
         FirstNameTextField.text = defaults.stringForKey("ffirstName")
         LastNameTextField.text = defaults.stringForKey("llastName")
-        EmailTextField.text = defaults.stringForKey("eemail")
+        EmailTextField.text = defaults.stringForKey("email")
         PhoneNumTextField.text = defaults.stringForKey("pphoneNumber")
         AddressLineOneTextField.text = defaults.stringForKey("aaddressLine1")
         AddressLineTwoTextField.text = defaults.stringForKey("aaddressLine2")
@@ -307,6 +307,9 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     
     
     
+    @IBAction func onTap(sender: AnyObject) {
+        view.endEditing(true)
+    }
 
    
 

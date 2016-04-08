@@ -15,6 +15,7 @@
 		1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A58B0321C9B5537006F0FBB /* LogInViewController.swift */; };
 		1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A51CB089C7007A8D4E /* CalendarVC.swift */; };
 		1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */; };
+		1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */; };
 		1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */; };
 		1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */; };
 		1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */; };
@@ -43,6 +44,7 @@
 		1A58B0321C9B5537006F0FBB /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		1AA993A51CB089C7007A8D4E /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
+		1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInfosDetailVC.swift; sourceTree = "<group>"; };
 		1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */,
 				1AA993A51CB089C7007A8D4E /* CalendarVC.swift */,
 				1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */,
+				1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */,
 				1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */,
+				1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */,
 				1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */,
 				1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */,
 				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,

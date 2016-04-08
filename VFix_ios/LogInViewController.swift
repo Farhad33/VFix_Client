@@ -154,7 +154,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
         }
+        view.endEditing(true)
         }
+    
+    
+    @IBAction func onTap(sender: AnyObject) {
+         view.endEditing(true)
+    }
+    
         
 }
     

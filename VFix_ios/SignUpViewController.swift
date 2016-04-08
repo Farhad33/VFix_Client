@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
      
   
-       
+       view.endEditing(true)
       //  self.performSegueWithIdentifier("showNew", sender: self)
     }
 
@@ -165,6 +165,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
+    @IBAction func onTap(sender: AnyObject) {
+         view.endEditing(true)
+    }
     
     
     
