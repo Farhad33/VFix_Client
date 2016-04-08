@@ -268,9 +268,12 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
 //    }
     
     @IBAction func ChangePicture(sender: AnyObject) {
-            UIView.animateWithDuration(0.5, animations: {
-                self.View1.center.y = self.view.bounds.height / 1.12            })
-        }
+        
+        UIView.animateWithDuration(0.5, animations: {
+        self.View1.center.y = self.view.bounds.height / 1.12            })
+        view.endEditing(true)
+        
+    }
     
     
     @IBAction func OnSave(sender: AnyObject) {
@@ -297,6 +300,11 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         defaults.setObject(PostalCode, forKey: "postalCode")
         defaults.setObject(ProfileJPG, forKey: "image")
         
+        
+     //   if AddressLineOneTextField.text == nil {
+            let check5 = false
+            defaults.setBool(check5, forKey: "BoooL")
+     //   }
         //       SaveSelectedIamge(ProfileJPEG)
         
         userDefaults.synchronize()
@@ -309,6 +317,9 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
+        UIView.animateWithDuration(0, animations: {
+            self.View1.center.y = self.view.bounds.height / 0})
+        
     }
 
    

@@ -39,6 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.stringForKey("postalCode")
         defaults.stringForKey("password")
         
+        var check3 = false
+        
+        
+        defaults.setBool(check3, forKey: "BoooL")
+        
+      //  defaults.boolForKey("BoooL")
+        print("App Delegate")
+        
         //**************
         
                 var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController

@@ -20,8 +20,15 @@ class CalendarVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         
+        print("Calendar viewDidLoad")
+        
 
       
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("Calendar View will Appear")
+        
     }
 
     override func didReceiveMemoryWarning() {
