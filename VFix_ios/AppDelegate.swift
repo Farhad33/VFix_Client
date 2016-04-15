@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuildUserInterface()
+        
+        VfixClient.NetworkRequest("companies/13772899/services")
+        
+        
+        
         userDefaults.synchronize()
         
         defaults.stringForKey("email")
@@ -38,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.stringForKey("state")
         defaults.stringForKey("postalCode")
         defaults.stringForKey("password")
+        
+        defaults.stringForKey("serviceAddress")
+        defaults.stringForKey("serviceCity")
+        defaults.stringForKey("serviceState")
+        defaults.stringForKey("servicePostalCode")
         
         var check3 = false
         

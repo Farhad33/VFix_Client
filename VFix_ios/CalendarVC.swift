@@ -21,6 +21,7 @@ class CalendarVC: UIViewController {
         
         
         print("Calendar viewDidLoad")
+//        print(MainViewController.service)
         
 
       

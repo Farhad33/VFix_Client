@@ -29,6 +29,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
 //    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
+    var SSSSSSButton = TWTRLogInButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +38,25 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         ImplementTwitterSignUp()
         ImplementFacebookSignUp()
+
+        
+//        SSSSSSButton.loginMethods = [.WebBased]
+//        
+//        let client = TWTRAPIClient.clientWithCurrentUser()
+//        let request = client.URLRequestWithMethod("GET",
+//                                                  URL: "https://api.twitter.com/1.1/account/verify_credentials.json",
+//                                                  parameters: ["include_email": "true", "skip_status": "true"],
+//                                                  error: nil)
+//        print(request)
+//        
+//        client.sendTwitterRequest(request) { response, data, connectionError in }
+//        
+        
         
         if defaults.stringForKey("email") != nil{
             emailText.text = defaults.stringForKey("email")
         }
 
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -100,7 +114,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     let TwSignUpButton = TWTRLogInButton { (session, error) in
         if let unwrappedSession = session {
             let alert = UIAlertController(title: "Logged In",
-                message: "User \(unwrappedSession.userName) has logged in",
+                message: "User \(unwrappedSession.userName) has logged in ",
                 preferredStyle: UIAlertControllerStyle.Alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -112,7 +126,15 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             NSLog("Login error: %@", error!.localizedDescription)
         }
+    
+        
+        
+        
     }
+        SSSSSSButton = TwSignUpButton
+        
+        
+
     TwSignUpButton.center.x = view.center.x
     TwSignUpButton.center.y = view.center.y+220
     let View = TwSignUpButton.subviews.last! as UIView
@@ -174,23 +196,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
 }
-//    struct TwitterAccount:ReadableSecureStorable, CreateableSecureStorable {
-//        let username: String
-//        let password: String
-//        
-//        var account: String { return username }
-//        var data: [String: AnyObject] {
-//            return ["password": password]
-//        }
-//    }
-//    
-//    var account = TwitterAccount(username: "username", password: "password")
-
-    // Save all this to the keychain
-   // account.createInSecureStore()
-    
-    // Now let’s get it back
-  //  let result: InternetPasswordSecureStorableResultType = account.readFromSecureStore()
     
 
 

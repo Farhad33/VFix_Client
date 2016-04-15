@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.0.0)
   - AFNetworking/UIKit (3.0.0):
     - AFNetworking/NSURLSession
+  - Alamofire (3.3.1)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Locksmith (2.0.8)
@@ -29,17 +30,31 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - AFNetworking (= 3.0.0)
+  - Alamofire
   - BDBOAuth1Manager (= 2.0.0)
   - Locksmith
   - MMDrawerController (~> 0.5.7)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

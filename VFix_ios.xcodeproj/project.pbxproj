@@ -13,6 +13,10 @@
 		1A2F45281C988AA700A2CE25 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */; };
 		1A2F45291C988AA700A2CE25 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45251C988AA700A2CE25 /* TwitterCore.framework */; };
 		1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A58B0321C9B5537006F0FBB /* LogInViewController.swift */; };
+		1A6FD1AE1CBDD43300CADAF4 /* AppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */; };
+		1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */; };
+		1AA1CDF71CBD90230013EC78 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1CDF61CBD90230013EC78 /* UserVC.swift */; };
+		1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */; };
 		1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A51CB089C7007A8D4E /* CalendarVC.swift */; };
 		1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */; };
 		1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */; };
@@ -42,6 +46,10 @@
 		1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		1A2F45251C988AA700A2CE25 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		1A58B0321C9B5537006F0FBB /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsVC.swift; sourceTree = "<group>"; };
+		1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
+		1AA1CDF61CBD90230013EC78 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VfixClient.swift; sourceTree = "<group>"; };
 		1AA993A51CB089C7007A8D4E /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInfosDetailVC.swift; sourceTree = "<group>"; };
@@ -86,10 +94,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AA1CDF51CBD8F0F0013EC78 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AA1CDF61CBD90230013EC78 /* UserVC.swift */,
+				1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1AA1CDF81CBD902C0013EC78 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		1AC98BCB1CA1D22100680A79 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */,
+				1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */,
 				1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */,
 				1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */,
 				1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */,
@@ -131,6 +157,8 @@
 		1C65AE2E1C76860500D87EE0 /* VFix_ios */ = {
 			isa = PBXGroup;
 			children = (
+				1AA1CDF81CBD902C0013EC78 /* API */,
+				1AA1CDF51CBD8F0F0013EC78 /* Models */,
 				1AC98BCB1CA1D22100680A79 /* Menu */,
 				1C93CAAD1C7FAD5800B43CB3 /* SignUp.LogIn */,
 				1C93CAAA1C7F998A00B43CB3 /* ContainerViewController.swift */,
@@ -324,13 +352,17 @@
 				1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */,
 				1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */,
 				1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */,
+				1A6FD1AE1CBDD43300CADAF4 /* AppointmentsVC.swift in Sources */,
 				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */,
 				1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */,
 				1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */,
+				1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */,
 				1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */,
 				1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */,
+				1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */,
 				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,
+				1AA1CDF71CBD90230013EC78 /* UserVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

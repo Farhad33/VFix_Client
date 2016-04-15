@@ -8,4 +8,6 @@ target 'VFix_ios' do
   pod 'BDBOAuth1Manager', '2.0.0'
   pod 'Locksmith'
   pod 'MMDrawerController', '~> 0.5.7'
+  pod 'Alamofire'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

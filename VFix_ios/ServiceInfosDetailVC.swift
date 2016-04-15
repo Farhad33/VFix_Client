@@ -17,6 +17,7 @@ class ServiceInfosDetailVC: UIViewController {
     @IBOutlet weak var PostalCodeTextField: UITextField!
     
     var defaults = NSUserDefaults.standardUserDefaults()
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     
 
@@ -74,9 +75,6 @@ class ServiceInfosDetailVC: UIViewController {
         defaults.setObject(City, forKey: "city1")
         defaults.setObject(State, forKey: "state1")
         defaults.setObject(PostalCode, forKey: "postalCode1")
-       
-        
-       
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,6 +85,73 @@ class ServiceInfosDetailVC: UIViewController {
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
+    
+    @IBAction func OnSave(sender: AnyObject) {
+        let AddressLine11 = AddressTextField.text
+        let City = CityTextField.text
+        let State = StateTextField.text
+        let PostalCode = PostalCodeTextField.text
+        
+        
+        defaults.setObject(AddressLine11, forKey: "addressLine11")
+        defaults.setObject(City, forKey: "city1")
+        defaults.setObject(State, forKey: "state1")
+        defaults.setObject(PostalCode, forKey: "postalCode1")
+        
+        if AddressLine11 == nil || AddressLine11 == "" {
+            var refreshAlert = UIAlertController(title: "Address Is Missing", message: "Please Inter an Address", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else if City == nil || City == "" {
+            var refreshAlert = UIAlertController(title: "City Is Missing", message: "Please Inter an City", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else if State == nil || State == "" {
+            var refreshAlert = UIAlertController(title: "State Is Missing", message: "Please Inter an State", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else if PostalCode == nil || PostalCode == "" {
+            var refreshAlert = UIAlertController(title: "Postal Code Is Missing", message: "Please Inter an Postal Code", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        } else {
+            
+            let ServiceAddress = AddressTextField.text
+            let ServiceCity = CityTextField.text
+            let ServiceState = StateTextField.text
+            let ServicePostalCode = PostalCodeTextField.text
+            
+            
+            defaults.setObject(ServiceAddress, forKey: "serviceAddress")
+            defaults.setObject(ServiceCity, forKey: "serviceCity")
+            defaults.setObject(ServiceState, forKey: "serviceState")
+            defaults.setObject(ServicePostalCode, forKey: "servicePostalCode")
+            
+            
+            var refreshAlert = UIAlertController(title: "Reservation Compete", message: "Thanks For Using Vfix", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+            
+            appDelegate.BuildUserInterface()
+        }
+        
+        
+        // || City == nil || City == "" || State == nil || State == "" || PostalCode == nil || PostalCode == "" || {
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
 
 
 }
