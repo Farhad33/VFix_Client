@@ -19,14 +19,11 @@ import SwiftyJSON
 private var Token: String = "22719873bdbb43cf0cc7f77d6e857e9e"
 private var Key: String = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
 private var Url: String = "https://www.agendize.com/api/2.0/scheduling/"
-private var Id: String = "companies/13772899/widget/freeSlots?serviceId=13772901"
+private var endPoint: String = "companies/13772899/widget/freeSlots?serviceId=13772901"
 
 
 class VfixClient {
-    
-    
-    
-    
+
     static var json: JSON!
     static var freeSlots: JSON!
     
@@ -47,7 +44,7 @@ class VfixClient {
     
     
     class func FreeSlots(startDate: String, endDate: String){
-        Alamofire.request(.GET, "\(Url)\(Id)&startDate=\(startDate)&endDate=\(endDate)&token=\(Token)&apiKey=\(Key)")
+        Alamofire.request(.GET, "\(Url)\(endPoint)&startDate=\(startDate)&endDate=\(endDate)&token=\(Token)&apiKey=\(Key)")
             .responseJSON { response in
                 
                 if response.result.isSuccess{

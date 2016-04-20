@@ -170,18 +170,6 @@ class SettingsViewController: UIViewController {
         } else {
             PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
         }
-        
-        
-//        NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-//        EmailLabel.text = "    " + defaults.stringForKey("email")!
-//        PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
-//        AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
-//        AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
-//        CityLabel.text = "    " + defaults.stringForKey("city")!
-//        StateLabel.text = "    " + defaults.stringForKey("state")!
-//        PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
-        
-        
         if ProfilePicImage.image == nil {
             ProfilePicImage.image = UIImage(named: "missing.png")
         } else {

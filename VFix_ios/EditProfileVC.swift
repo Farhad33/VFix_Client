@@ -71,23 +71,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         CapturedPic.layer.borderColor = UIColor.blackColor().CGColor
         CapturedPic.layer.cornerRadius = CapturedPic.frame.height/2
         CapturedPic.clipsToBounds = true
-        
-        
-//        if let imageData = defaults.objectForKey(EditProfileVC.ProfileImg) as? NSData {
-//            let storedImage = UIImage.init(data: imageData)
-//            EditProfileVC.ProfileImg.image = storedImage
-//        }
-        
-        
-        
-        
- //       CapturedPic.image = defaults.setObject( , forKey: "profileJPG")
-      
-        // CapturedPic.image = defaults.setObject(ProfileJPG , forKey: "profileJPG")
-     
-        
-
-        // Do any additional setup after loading the view.
     }
     
     
@@ -162,35 +145,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     }
     
     
-    
-    
-    
-//    @IBAction func OnSubmit(sender: AnyObject) {
-//        print("Submit button clicked")
-//        
-//        let newImage = resize(image, newSize: CGSize(width: 300, height: 500))
-//        InstagramShare.postUserImage(newImage, withCaption: writeCaptionTextField.text) { (success: Bool, error: NSError?) -> Void in
-//            
-//            if success {
-//                self.CapturedPic.image = nil
-//                self.writeCaptionTextField.text = nil
-//                self.tabBarController?.selectedIndex = 0
-//                print("image captured")
-//            } else {
-//                print("Couldn't post image to database")
-//            }
-//            
-//        }
-//        
-//    }
-//    
-//    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-    
-    
     func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
     }
@@ -234,15 +188,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
             dismissViewControllerAnimated(true, completion: nil)
             self.CapturedPic.image = image
     }
-//    func imagePickerController(picker: UIImagePickerController,
-//        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//            let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//            let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-//            image = originalImage
-//            saveToCamera(image)
-//            dismissViewControllerAnimated(true, completion: nil)
-//            self.CapturedPic.image = image
-//    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -261,11 +206,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         UIGraphicsEndImageContext()
         return newImage
     }
-    
-//    func SaveSelectedIamge(image: UIImage){
-//        let ProfileJPG = UIImageJPEGRepresentation(image, 100)
-//        defaults.setObject(ProfileJPG, forKey: EditProfileVC.ProfileImg)
-//    }
     
     @IBAction func ChangePicture(sender: AnyObject) {
         
@@ -300,13 +240,8 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         defaults.setObject(PostalCode, forKey: "postalCode")
         defaults.setObject(ProfileJPG, forKey: "image")
         
-        
-     //   if AddressLineOneTextField.text == nil {
-            let check5 = false
-            defaults.setBool(check5, forKey: "BoooL")
-     //   }
-        //       SaveSelectedIamge(ProfileJPEG)
-        
+        let check5 = false
+        defaults.setBool(check5, forKey: "BoooL")
         userDefaults.synchronize()
         
         self.dismissViewControllerAnimated(true, completion: nil)

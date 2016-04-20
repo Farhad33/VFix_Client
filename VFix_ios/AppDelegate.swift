@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         BuildUserInterface()
         
-        VfixClient.NetworkRequest("companies/13772899/services")
+//        VfixClient.NetworkRequest("companies/13772899/services")
         
         
         
@@ -50,9 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.stringForKey("servicePostalCode")
         
         var check3 = false
-        
-        
         defaults.setBool(check3, forKey: "BoooL")
+        
+        var check4 = false
+        defaults.setBool(check4, forKey: "BoooLE")
+        
+        
+        
         
       //  defaults.boolForKey("BoooL")
         print("App Delegate")

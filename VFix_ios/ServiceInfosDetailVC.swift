@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMDrawerController
 
 class ServiceInfosDetailVC: UIViewController {
     
@@ -54,13 +55,6 @@ class ServiceInfosDetailVC: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         print("View Will Disappear")
-//        let check4 = defaults.boolForKey("BoooL")
-//        var check2: Bool
-//        if check4 == false{
-//            check2 = false
-//        } else {
-//             check2 = true
-//        }
         var check2 = true
     
         defaults.setBool(check2, forKey: "BoooL")
@@ -131,27 +125,15 @@ class ServiceInfosDetailVC: UIViewController {
             defaults.setObject(ServiceState, forKey: "serviceState")
             defaults.setObject(ServicePostalCode, forKey: "servicePostalCode")
             
+          //  self.performSegueWithIdentifier("ServiceToAppointments", sender: self)
             
             var refreshAlert = UIAlertController(title: "Reservation Compete", message: "Thanks For Using Vfix", preferredStyle: UIAlertControllerStyle.Alert)
             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                var appointmentsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AppointmentsViewController") as! AppointmentsViewController
+                var appointmentsPageNav = UINavigationController(rootViewController: appointmentsViewController)
+                self.appDelegate.DrawerContainer!.centerViewController = appointmentsPageNav
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
-            
-            appDelegate.BuildUserInterface()
         }
-        
-        
-        // || City == nil || City == "" || State == nil || State == "" || PostalCode == nil || PostalCode == "" || {
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    
-
-
 }

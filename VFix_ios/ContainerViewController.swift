@@ -30,7 +30,7 @@ class ContainerViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-      //  self.navigationController?.navigationBarHidden = true
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -42,7 +42,7 @@ class ContainerViewController: UIViewController {
 
     @IBAction func signupOrLogin(sender: AnyObject) {
         if sender as! NSObject == signUpButtom{
-//            SignUpViewController
+
         }
         
         if sender as! NSObject == loginButtom{

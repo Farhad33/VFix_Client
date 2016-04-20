@@ -24,6 +24,8 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     var MenuItems: [String] = ["Home","Profile","Appointments","Receipts","Support","Log Out"]
     var MenuIcon: [String] = ["home.png", "Profile.png", "appointment.png", "Receipt.png", "Support.png", "exit.png"]
     var defaults = NSUserDefaults.standardUserDefaults()
+    var check4: Bool!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,9 +158,8 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
                 var ContainerPage: ContainerViewController = MainStoryBoard.instantiateViewControllerWithIdentifier("ContainerViewController") as! ContainerViewController
                 var ContainerPageNav = UINavigationController(rootViewController: ContainerPage)
                 self.appDelegate.window?.rootViewController = ContainerPageNav
-
-                
-                
+                self.check4 = false
+                self.defaults.setBool(self.check4, forKey: "BoooLE")
             }))
             
             refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in

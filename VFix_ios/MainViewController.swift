@@ -11,64 +11,119 @@ import MMDrawerController
 import Alamofire
 import SwiftyJSON
 import AFNetworking
+import ARSLineProgress
+
+private var Token: String = "22719873bdbb43cf0cc7f77d6e857e9e"
+private var Key: String = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
+private var Url: String = "https://www.agendize.com/api/2.0/scheduling/"
+private var endPoint: String = "companies/13772899/services"
 
 var services: Array = [JSON]()
+var rawServises: JSON!
+var tableChecker = false
 
-class MainViewController: UIViewController {
-    
-    
-    
+
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var DiagnosticButton: UIButton!
-//    @IBOutlet weak var virusRemovalButton: UIButton!
-//    @IBOutlet weak var ElectronicSetupButton: UIButton!
-//    @IBOutlet weak var PcTuneUpButton: UIButton!
-//    @IBOutlet weak var PrinterSetupButton: UIButton!
-//    @IBOutlet weak var DataBackUpButton: UIButton!
-//    @IBOutlet weak var WifiSolutionButton: UIButton!
-//    @IBOutlet weak var PcMacSupportButton: UIButton!
-    
-    
-    
-    
-//    var MenuItems: [String] = ["VIRUS REMOVAL","DIAGNOSTIC AND REPAIR","ELECTRONIC SETUP","PC TUNE-UP","PRINTER SETUP","DATA BACKUP", "WIFI SOLUTIONS", "PC/MAC SUPPORT"]
-//    var MenuIcon: [String] = ["home.png", "Profile.png", "appointment.png", "Receipt.png", "Support.png", "exit.png", "exit.png", "exit.png"]
-    
+    var app = UIApplication.sharedApplication()
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//    static var service = ""
-
+    var defaults = NSUserDefaults.standardUserDefaults()
+    var check4: Bool!
+    var loadingView = DGElasticPullToRefreshLoadingViewCircle()
+    
+    private func NetworkRequest(endPoint: String)  {
+        Alamofire.request(.GET, "\(Url)\(endPoint)?apiKey=\(Key)&token=\(Token)")
+            .responseJSON { response in
+                
+                if response.result.isSuccess{
+                    
+                    
+                    self.check4 = self.defaults.boolForKey("BoooLE")
+                    if self.check4 == false {
+                            if ARSLineProgress.shown { return }
+                    
+                            progressObject = NSProgress(totalUnitCount: 100)
+                            ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+                            print("Success completion block")
+                            self.view.userInteractionEnabled = true
+                            self.app.endIgnoringInteractionEvents()
+                            })
+                    
+                            self.progressDemoHelper(success: true)
+                            self.check4 = true
+                            self.defaults.setBool(self.check4, forKey: "BoooLE")
+                    }
+                        
+                    
+                    
+                    
+                    if let value = response.result.value {
+                        rawServises = JSON(value)
+                        
+                        services.removeAll()
+                        
+                        for (_,i) in rawServises["items"] {
+                            services.append(i)
+                        }
+                        
+                        tableChecker = true
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        self.tableView.reloadData()
+                        
+                        
+                    }
+                  
+                }else{
+                    if ARSLineProgress.shown { return }
+                    
+                    progressObject = NSProgress(totalUnitCount: 100)
+                    
+                    ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+                        print("This copmletion block is going to be overriden by cancel completion block in launchTimer() method.")
+                    })
+                    
+                    self.progressDemoHelper(success: false)
+                    self.app.endIgnoringInteractionEvents()
+                    self.check4 = true
+                    self.defaults.setBool(self.check4, forKey: "BoooLE")
+                }
+        }
+    }
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        check4 = defaults.boolForKey("BoooLE")
+        if check4 == false {
+        self.app.beginIgnoringInteractionEvents()
+        
+        }
+        NetworkRequest(endPoint)
+        
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        services.removeAll()
-        
-        for (_,i) in VfixClient.json["items"] {
-            services.append(i)
-        }
-        
-//        for i in services {
-//            print(i["id"])
-//            print(i["name"])
-//            print(i["picture"]["url"])
-//        }
-        print(services.count)
-
-        // Do any additional setup after loading the view.
+        Refresh()
     }
+    
     
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
     }
+//    override func viewWillAppear(animated: Bool) {
+//        Refresh()
+//    }
+    
+    override func viewDidDisappear(animated: Bool) {
+         tableView.dg_removePullToRefresh()
+    }
     
     // override func view
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,55 +139,70 @@ class MainViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return services.count
+        if tableChecker == false{
+            return 0
+        }else{
+            return services.count
+        }
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("MainVCCell", forIndexPath: indexPath) as! MainVCCell
         
-        
-      //  image = UIImage(named: services[indexPath.row])
         let service = services[indexPath.row]
         cell.MenuItemLabel.text = service["name"].stringValue
         let imageUrl = service["picture"]["url"].stringValue
-        
         cell.IconImage.setImageWithURL(NSURL(string: imageUrl)!)
-//        cell.IconImage.setImageWithURL(NSURL(string: imageUrl)!)
-        
-        
-       // .image = imageUrl
-        //  cell.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         return cell
     }
+    
+    
+    func Refresh() {
+//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                self?.tableView.dg_stopLoading()
+//                self?.tableView.reloadData()
+            })
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+       
+    }
+}
 
-    
-    
 
+private var progress: CGFloat = 0.0
+private var progressObject: NSProgress?
+private var isSuccess: Bool?
+
+extension MainViewController {
     
-//    @IBAction func onServices(sender: AnyObject) {
-//        
-//        if sender as! NSObject == virusRemovalButton{
-//            MainViewController.service = "13772900"
-//        }else if sender as! NSObject == DiagnosticButton{
-//            MainViewController.service = "22222222"
-//        }else if sender as! NSObject == ElectronicSetupButton{
-//            MainViewController.service = "33333333"
-//        }else if sender as! NSObject == PcTuneUpButton{
-//            MainViewController.service = "44444444"
-//        }else if sender as! NSObject == PrinterSetupButton{
-//            MainViewController.service = "55555555"
-//        }else if sender as! NSObject == DataBackUpButton{
-//            MainViewController.service = "66666666"
-//        }else if sender as! NSObject == WifiSolutionButton{
-//            MainViewController.service = "77777777"
-//        }else if sender as! NSObject == PcMacSupportButton{
-//            MainViewController.service = "88888888"
-//        }
-//        self.performSegueWithIdentifier("goToCalanderSegue", sender: self)
-//        
-//    }
+    private func progressDemoHelper(success success: Bool) {
+        isSuccess = success
+        launchTimer()
+    }
     
-    
+    private func launchTimer() {
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC)));
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            progressObject!.completedUnitCount += Int64(arc4random_uniform(30))
+            
+            if isSuccess == false && progressObject?.fractionCompleted >= 0.7 {
+                ARSLineProgress.cancelPorgressWithFailAnimation(true, completionBlock: {
+                    print("Hidden with completion block")
+                })
+                return
+            } else {
+                if progressObject?.fractionCompleted >= 1.0 { return }
+            }
+            
+            self.launchTimer()
+        })
+    }
     
 }

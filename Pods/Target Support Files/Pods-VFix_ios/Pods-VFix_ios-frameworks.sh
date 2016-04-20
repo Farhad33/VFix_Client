@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-VFix_ios/AFNetworking.framework"
+  install_framework "Pods-VFix_ios/ARSLineProgress.framework"
   install_framework "Pods-VFix_ios/Alamofire.framework"
   install_framework "Pods-VFix_ios/BDBOAuth1Manager.framework"
   install_framework "Pods-VFix_ios/Locksmith.framework"
@@ -93,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-VFix_ios/AFNetworking.framework"
+  install_framework "Pods-VFix_ios/ARSLineProgress.framework"
   install_framework "Pods-VFix_ios/Alamofire.framework"
   install_framework "Pods-VFix_ios/BDBOAuth1Manager.framework"
   install_framework "Pods-VFix_ios/Locksmith.framework"

@@ -17,11 +17,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var LogWithEmail: UIButton!
     
-    
- //   var username: String?
-//    var password: String = ""
-//    var checkUser: String = ""
-//    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
     var refreshAlert = UIAlertController(title: "Log out", message: "This action is irriversable. Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -65,9 +60,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     preferredStyle: UIAlertControllerStyle.Alert
                 )
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            //    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 self.appDelegate.BuildUserInterface()
-                // self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
                 NSLog("Login error: %@", error!.localizedDescription)
@@ -93,7 +86,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let loginButton = FBSDKLoginButton()
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        // loginButton.center = self.view.center
         loginButton.frame.size.height = 40
         loginButton.frame.size.width = 280
         loginButton.center.x = view.center.x
@@ -107,10 +99,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if error == nil {
             print("Login successful")
-       //     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.BuildUserInterface()
-           // self.performSegueWithIdentifier("FromLoginToMenuSegue", sender: self)
-            
         } else {
             print(error.localizedDescription)
         }
@@ -137,10 +126,6 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
-//        } else if checkUser == nil {
-//            emailText.backgroundColor = UIColor.redColor()
-//            emailText.placeholder = "Field Required"
-//            print("please Sign UP")
         } else if username == checkUser && checkPass == password {
                 appDelegate.BuildUserInterface()
         } else if username != checkUser {

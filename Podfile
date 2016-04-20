@@ -10,4 +10,5 @@ target 'VFix_ios' do
   pod 'MMDrawerController', '~> 0.5.7'
   pod 'Alamofire'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+  pod 'ARSLineProgress', '~> 1.0'
 end

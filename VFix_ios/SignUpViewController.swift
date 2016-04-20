@@ -23,10 +23,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var FacebookLabel: UIButton!
     @IBOutlet weak var TwitterLabel: UIButton!
     
-//    var username: String = ""
-//    var password: String = ""
     var checkUser: String?
-//    var checkPass: String = " "
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
     var SSSSSSButton = TWTRLogInButton()
@@ -38,20 +35,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         ImplementTwitterSignUp()
         ImplementFacebookSignUp()
-
-        
-//        SSSSSSButton.loginMethods = [.WebBased]
-//        
-//        let client = TWTRAPIClient.clientWithCurrentUser()
-//        let request = client.URLRequestWithMethod("GET",
-//                                                  URL: "https://api.twitter.com/1.1/account/verify_credentials.json",
-//                                                  parameters: ["include_email": "true", "skip_status": "true"],
-//                                                  error: nil)
-//        print(request)
-//        
-//        client.sendTwitterRequest(request) { response, data, connectionError in }
-//        
-        
         
         if defaults.stringForKey("email") != nil{
             emailText.text = defaults.stringForKey("email")
@@ -74,7 +57,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
          checkUser = defaults.stringForKey("email")
         }
-   //     checkPass = defaults.stringForKey("password")!
+ 
         if emailText.text == "" || emailText.text == nil {
             var refreshAlert = UIAlertController(title: "Error", message: "Please Insert Email", preferredStyle: UIAlertControllerStyle.Alert)
             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
@@ -118,10 +101,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 preferredStyle: UIAlertControllerStyle.Alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-     //       var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             self.appDelegate.logUser()
             self.appDelegate.BuildUserInterface()
-            // self.performSegueWithIdentifier("showNew", sender: self)
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
             NSLog("Login error: %@", error!.localizedDescription)
@@ -154,7 +135,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
         let FbSignUpButton = FBSDKLoginButton()
         FbSignUpButton.readPermissions = ["public_profile", "email", "user_friends"]
-    // loginButton.center = self.view.center
+
         FbSignUpButton.frame.size.height = 40
         FbSignUpButton.frame.size.width = 280
         FbSignUpButton.center.x = view.center.x
@@ -172,10 +153,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if error == nil {
             print("Login successful")
-    //        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.BuildUserInterface()
-            //  self.performSegueWithIdentifier("showNew", sender: self)
-            
         } else {
             print(error.localizedDescription)
         }
