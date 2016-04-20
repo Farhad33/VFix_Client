@@ -1,0 +1,215 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"inline"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/youcefiratni/Documents/CCSF/CODE PATH ACADEMY/Week4/Twitter/Twitter/Info.plist",
+		"/Users/youcefiratni/Documents/CCSF/CCSF 2015 Spring/CNIT132/Home Work/homework3/homework3.html",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework14/A14_iratni.lst",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework14/A14_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CODE PATH ACADEMY/GitHub Stuf/README.md",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/NouNou/SettingsViewController",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/NouNou/ViewController",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/NouNou/::",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework14/pets_01.xml",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework8/A08_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework13/a_bkinfo.BookSize.txt",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework13/1111.txt",
+		"/Users/youcefiratni/Downloads/A12_iratni.lst",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework12/A12_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework7/A07_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework3/A03_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework6/A06_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS111C/Homework/Homework10/Chapter-23",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS111C/Homework/Homework5/discription",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS111C/Homework/Homework4/description",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework1/A01_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS111C/CS111C Access Code",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS155A/Homework/Homework1/A01_iratni/A01_iratni.sql",
+		"/Users/youcefiratni/Documents/CCSF/CCSF2015Fall/CS211S/class pics/1st day.txt",
+		"/Users/youcefiratni/Documents/CCSF/CCSF 2015 Fall/CS155A/commands MYSQL",
+		"/Users/youcefiratni/Documents/CCSF/CCSF 2015 Fall/CS111C/Homework/Homework1/Fractions CRC",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Fall 2015/CS211S/Prentice.Hall.Core.Java.Volume.II.Advanced.Features.9th.Edition.013708160X.rar",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Homework/Homework5/lab5.1_outp",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Homework/Homework5/lab5.1.outt...txt",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Homework/Homework5/lab5....1.out.txt",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Exercises/week5/monty_python.cgi",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Exercises/week5/exercise5.1.html",
+		"/Users/youcefiratni/Downloads/lab2.1.py",
+		"/Users/youcefiratni/Documents/CCSF/CCSF Summer 2015/CS131A/Homework/Homework1/lab1.2.cgi",
+		"/Users/youcefiratni/Documents/CNIT132/Home Work/homework8/form1.pl",
+		"/Users/youcefiratni/Documents/CNIT132/Home Work/homework9/homework9.html",
+		"/Users/youcefiratni/Documents/CNIT132/Home Work/homework8/homework8.html",
+		"/Users/youcefiratni/Documents/CS111B/Home work/home work 8/assignment8/K8.html",
+		"/Users/youcefiratni/Documents/CNIT132/Home Work/homework8/homework8.A.html",
+		"/Users/youcefiratni/Documents/CS111B/Home work/home work 8/Youcef/K8.html",
+		"/Users/youcefiratni/Documents/CS111B/Home work/home work 8/K8.html",
+		"/Users/youcefiratni/Documents/CNIT132/Home Work/homework7/homework7.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"well",
+			"tempConversionForm",
+			"alignRight",
+			"instructionBox",
+			"instructions",
+			"instructionBox",
+			"myPalindromeForm",
+			"invertDisplay",
+			"commissionForm",
+			".commissionForm",
+			"commissionForm",
+			"#myform",
+			"center",
+			"alert",
+			"cisbutton"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "VFix_ios.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

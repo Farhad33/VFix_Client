@@ -1,0 +1,72 @@
+PODS:
+  - AFNetworking (3.0.0):
+    - AFNetworking/NSURLSession (= 3.0.0)
+    - AFNetworking/Reachability (= 3.0.0)
+    - AFNetworking/Security (= 3.0.0)
+    - AFNetworking/Serialization (= 3.0.0)
+    - AFNetworking/UIKit (= 3.0.0)
+  - AFNetworking/NSURLSession (3.0.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.0.0)
+  - AFNetworking/Security (3.0.0)
+  - AFNetworking/Serialization (3.0.0)
+  - AFNetworking/UIKit (3.0.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (3.3.1)
+  - BDBOAuth1Manager (2.0.0):
+    - AFNetworking/NSURLSession (~> 3.0.0)
+  - Bolts/Tasks (1.7.0)
+  - FSCalendar (2.1.0)
+  - Locksmith (2.0.8)
+  - MMDrawerController (0.5.7):
+    - MMDrawerController/Core (= 0.5.7)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
+    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
+    - MMDrawerController/Subclass (= 0.5.7)
+  - MMDrawerController/Core (0.5.7)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.7):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.7):
+    - MMDrawerController/Core
+  - Parse (1.13.0):
+    - Bolts/Tasks (~> 1.6)
+  - SwiftMoment (0.4)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - AFNetworking (= 3.0.0)
+  - Alamofire
+  - BDBOAuth1Manager (= 2.0.0)
+  - FSCalendar
+  - Locksmith
+  - MMDrawerController (~> 0.5.7)
+  - Parse
+  - SwiftMoment
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  FSCalendar: d8b9dddaf96fff7621a33b110763d981bb01bc04
+  Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
+  MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+  SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
