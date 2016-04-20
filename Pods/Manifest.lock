@@ -18,6 +18,8 @@ PODS:
   - ARSLineProgress (1.1.1)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
+  - Bolts/Tasks (1.7.0)
+  - FSCalendar (2.1.0)
   - Locksmith (2.0.8)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
@@ -31,6 +33,9 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
+  - Parse (1.13.0):
+    - Bolts/Tasks (~> 1.6)
+  - SwiftMoment (0.4)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -38,8 +43,11 @@ DEPENDENCIES:
   - Alamofire
   - ARSLineProgress (~> 1.0)
   - BDBOAuth1Manager (= 2.0.0)
+  - FSCalendar
   - Locksmith
   - MMDrawerController (~> 0.5.7)
+  - Parse
+  - SwiftMoment
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -56,8 +64,12 @@ SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   ARSLineProgress: e54c736d1cf043229c2038d35572f9977f240ebd
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  FSCalendar: d8b9dddaf96fff7621a33b110763d981bb01bc04
   Locksmith: a8ed41ac4c06506ea8cb199d8ec8a8d3d108eb2a
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+  SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

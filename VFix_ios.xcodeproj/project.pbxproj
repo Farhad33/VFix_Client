@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A02B58A1CC743C50038CD58 /* timesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */; };
 		1A0F9D091CB1BE34002D8780 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */; };
 		1A2F45261C988AA700A2CE25 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45221C988AA700A2CE25 /* Fabric.framework */; };
 		1A2F45271C988AA700A2CE25 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45231C988AA700A2CE25 /* TwitterKit.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timesCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1A2F45221C988AA700A2CE25 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1A2F45231C988AA700A2CE25 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1AA993A51CB089C7007A8D4E /* CalendarVC.swift */,
 				1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */,
 				1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */,
+				1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */,
 				1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */,
 				1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */,
+				1A02B58A1CC743C50038CD58 /* timesCollectionViewCell.swift in Sources */,
 				1A30D2931CC71BEF0056E51E /* DGElasticPullToRefreshView.swift in Sources */,
 				1C93CAAB1C7F998A00B43CB3 /* ContainerViewController.swift in Sources */,
 				1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */,

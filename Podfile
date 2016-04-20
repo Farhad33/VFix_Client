@@ -11,4 +11,7 @@ target 'VFix_ios' do
   pod 'Alamofire'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'ARSLineProgress', '~> 1.0'
+  pod 'Parse'
+  pod 'FSCalendar'
+  pod 'SwiftMoment'
 end
