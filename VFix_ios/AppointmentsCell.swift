@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import MMDrawerController
+import Alamofire
+import SwiftyJSON
+import AFNetworking
+import ARSLineProgress
 
 class AppointmentsCell: UITableViewCell {
     
     @IBOutlet weak var DateLabel: UILabel!
     @IBOutlet weak var PriceLabel: UILabel!
     @IBOutlet weak var AddressLabel: UILabel!
-    @IBOutlet weak var TechNameLabel: UILabel!
+    @IBOutlet weak var CityLabel: UILabel!
     
     
 

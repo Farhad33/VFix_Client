@@ -13,15 +13,6 @@ import SwiftyJSON
 import AFNetworking
 import ARSLineProgress
 
-//private var Token: String = "22719873bdbb43cf0cc7f77d6e857e9e"
-//private var Key: String = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
-//private var Url: String = "https://www.agendize.com/api/2.0/scheduling/"
-//private var endPoint: String = "companies/13772899/services"
-//
-//var services: Array = [JSON]()
-//var rawServises: JSON!
-//var tableChecker = false
-
 
 private var Token = "22719873bdbb43cf0cc7f77d6e857e9e"
 private var Key = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
@@ -41,40 +32,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var check4: Bool!
     var loadingView = DGElasticPullToRefreshLoadingViewCircle()
     
-    
-    
-    
-//    func NetworkRequest()  {
-//        Alamofire.request(.GET, "\(BaseUrl)\(Id)?apiKey=\(Key)&token=\(Token)")
-//            .responseJSON { response in
-//                
-//                if response.result.isSuccess{
-//                    print("success")
-//                    if let value = response.result.value {
-//                        let values = JSON(value)
-//                        for (_,i) in values["items"] {
-//                            services.append(i)
-//                        }
-//                    }
-//                    self.tableView.reloadData()
-//                    self.tableView.dataSource = self
-//                    self.tableView.delegate = self
-//                    print("done")
-//                }else{
-//                    print("dumb shit")
-//                }
-//        }
-//    }
-    
-    
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        check4 = defaults.boolForKey("BoooLE")
+        if check4 == false {
+        self.app.beginIgnoringInteractionEvents()
+        
+        }
+        services.removeAll()
+        NetworkRequest()
+        appDelegate.Refresh(tableView)
+        appDelegate.Design(navigationController!, View: view)
+    }
     
     
     func NetworkRequest() {
-//        Alamofire.request(.GET, "\(Url)\(endPoint)?apiKey=\(Key)&token=\(Token)")
-//            .responseJSON { response in
-//                
-//                if response.result.isSuccess{
-        
         Alamofire.request(.GET, "\(BaseUrl)\(Id)?apiKey=\(Key)&token=\(Token)")
             .responseJSON { response in
                 
@@ -82,52 +55,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     self.check4 = self.defaults.boolForKey("BoooLE")
                     if self.check4 == false {
-                            if ARSLineProgress.shown { return }
-                    
-                            progressObject = NSProgress(totalUnitCount: 100)
-                            ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+                        if ARSLineProgress.shown { return }
+                        
+                        progressObject = NSProgress(totalUnitCount: 5)
+                        ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
                             print("Success completion block")
                             self.view.userInteractionEnabled = true
                             self.app.endIgnoringInteractionEvents()
-                            })
-                    
-                            self.progressDemoHelper(success: true)
-                            self.check4 = true
-                            self.defaults.setBool(self.check4, forKey: "BoooLE")
-                    }
+                        })
                         
-                    
-                    
-                    
-//                    if let value = response.result.value {
-//                        rawServises = JSON(value)
-//                        
-//                        services.removeAll()
-//                        
-//                        for (_,i) in rawServises["items"] {
-//                            services.append(i)
-//                        }
-//                        
-//                        tableChecker = true
-//                        self.tableView.delegate = self
-//                        self.tableView.dataSource = self
-                    
-                    if response.result.isSuccess{
-                        print("success")
-                        if let value = response.result.value {
-                            let values = JSON(value)
-                            for (_,i) in values["items"] {
-                                services.append(i)
-                            }
+                        self.progressDemoHelper(success: true)
+                        self.check4 = true
+                        self.defaults.setBool(self.check4, forKey: "BoooLE")
+                    }
+                    print("success")
+                    if let value = response.result.value {
+                        let values = JSON(value)
+                        for (_,i) in values["items"] {
+                            services.append(i)
                         }
-                        self.tableView.reloadData()
-                        self.tableView.dataSource = self
-                        self.tableView.delegate = self
-                        self.tableView.reloadData()
-                        
-                        
                     }
-                  
+                    self.tableView.reloadData()
+                    self.tableView.dataSource = self
+                    self.tableView.delegate = self
+                    self.tableView.reloadData()
                 }else{
                     if ARSLineProgress.shown { return }
                     
@@ -146,38 +97,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        check4 = defaults.boolForKey("BoooLE")
-        if check4 == false {
-        self.app.beginIgnoringInteractionEvents()
-        
-        }
-        // NetworkRequest(endPoint)
-        services.removeAll()
-        NetworkRequest()
-        
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        Refresh()
-    }
-    
-    
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
     }
 //    override func viewWillAppear(animated: Bool) {
-//        Refresh()
+
 //    }
     
-    override func viewDidDisappear(animated: Bool) {
-         tableView.dg_removePullToRefresh()
-    }
-    
-    // override func view
+//    override func viewDidDisappear(animated: Bool) {
+//         tableView.dg_removePullToRefresh()
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -194,11 +123,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-//        if tableChecker == false{
-//            return 0
-//        }else{
-//            return services.count
-//        }
         return services.count
     }
     
@@ -212,21 +136,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let imageUrl = service["picture"]["url"].stringValue
         cell.IconImage.setImageWithURL(NSURL(string: imageUrl)!)
         return cell
-    }
-    
-    
-    func Refresh() {
-//        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 249/255, green: 249/255, blue: 0/255, alpha: 1.0)
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                self?.tableView.dg_stopLoading()
-//                self?.tableView.reloadData()
-            })
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-       
     }
 }
 

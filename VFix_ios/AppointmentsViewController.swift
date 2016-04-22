@@ -14,11 +14,13 @@ import AFNetworking
 import ARSLineProgress
 
 
-private var Token: String = "22719873bdbb43cf0cc7f77d6e857e9e"
-private var Key: String = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
-private var Url: String = "https://www.agendize.com/api/2.0/scheduling/"
-private var endPoint: String = "companies/13772899/appointments?client.id=1380450"
+
+private var Token = "22719873bdbb43cf0cc7f77d6e857e9e"
+private var Key = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
+private var BaseUrl = "http://www.agendize.com/api/2.0/scheduling/companies/13772899/appointments?clientId="
+private var Id = "23830345"
 var json: JSON!
+var appointments: Array = [JSON]()
 
 class AppointmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,43 +29,62 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var loadingView = DGElasticPullToRefreshLoadingViewCircle()
+    var app = UIApplication.sharedApplication()
     
-    func NetworkRequest()  {
-        Alamofire.request(.GET, "\(Url)\(endPoint)?apiKey=\(Key)&token=\(Token)")
-            .responseJSON { response in
-                
-                if response.result.isSuccess{
-                    if let value = response.result.value {
-                        json = JSON(value)
-                        print(json)
-                    }
-                }else{
-                    print("dumb shit")
-                }
-        }
-    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkRequest()
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        appDelegate.Design(navigationController!, View: view)
         
         tableView.delegate = self
         tableView.dataSource = self
 
-        // Do any additional setup after loading the view.
-        
-        Refresh()
+        self.app.beginIgnoringInteractionEvents()
+        NetworkRequest()
+        appDelegate.Refresh(tableView)
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        tableView.dg_removePullToRefresh()
-    }
     
+    
+    func NetworkRequest()  {
+        Alamofire.request(.GET, "\(BaseUrl)\(Id)&token=\(Token)&apiKey=\(Key)")
+            .responseJSON { response in
+                
+                if response.result.isSuccess{
+                    
+                    if ARSLineProgress.shown { return }
+                    
+                        progressObject = NSProgress(totalUnitCount: 1)
+                        ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
+                        print("Success completion block")
+                       // ARSLineProgress.showSuccess()
+                        self.view.userInteractionEnabled = true
+                        self.app.endIgnoringInteractionEvents()
+                        self.tableView.reloadData()
+                    })
+                    
+                    self.progressDemoHelper(success: true)
+                    print("success")
+                    appointments.removeAll()
+                    if let value = response.result.value {
+                        let values = JSON(value)
+                        for (_, i) in values["items"]{
+                            appointments.append(i)
+                        }
+                        print(appointments)
+                    }
+                }else{
+                    
+                    print("dumb shit")
+                }
+                
+        }
+        
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,34 +93,99 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-            return 3
+            return appointments.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("AppointmentsCell", forIndexPath: indexPath) as! AppointmentsCell
-   //     cell.DateTextField.text = service["name"].stringValue
-        return cell
-    }
-    
-    
-    func Refresh() {
-        //        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                self?.tableView.dg_stopLoading()
-                //                self?.tableView.reloadData()
-            })
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        let appointment = appointments[indexPath.row]
         
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.dateFromString(appointment["start"]["dateTime"].stringValue)
+        dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        let dateString = dateFormatter.stringFromDate(date!)
+        cell.DateLabel.text = dateString
+        cell.PriceLabel.text = appointment["price"].stringValue
+        cell.AddressLabel.text = appointment["client"]["address"]["street"].stringValue
+        cell.CityLabel.text = appointment["client"]["address"]["city"].stringValue
+        return cell
     }
     
     @IBAction func LeftMenuButtonTapped(sender: AnyObject) {
         
         appDelegate.DrawerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier) == "AppointsCellToDetails" {
+            
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let appointment = appointments[indexPath!.row]
+            let appointmentsDetailsVC = segue.destinationViewController as! AppointmentsDetailsVC
+            
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            let date = dateFormatter.dateFromString(appointment["start"]["dateTime"].stringValue)
+            dateFormatter.timeStyle = .ShortStyle
+            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+            let dateString = dateFormatter.stringFromDate(date!)
+            
+            
+            appointmentsDetailsVC.date = dateString
+            appointmentsDetailsVC.price = appointment["price"].stringValue
+            appointmentsDetailsVC.address = appointment["client"]["address"]["street"].stringValue
+            appointmentsDetailsVC.city = appointment["client"]["address"]["city"].stringValue
+            appointmentsDetailsVC.state = appointment["client"]["address"]["state"].stringValue
+            appointmentsDetailsVC.zipCode = appointment["client"]["address"]["zipCode"].stringValue
+            
+            appointmentsDetailsVC.firstName = appointment["staff"]["firstName"].stringValue
+            appointmentsDetailsVC.lastName = appointment["staff"]["lastName"].stringValue
+            appointmentsDetailsVC.serviceType = appointment["service"]["name"].stringValue
+        }
+        
+    }
+}
+
+
+
+
+private var progress: CGFloat = 0.0
+private var progressObject: NSProgress?
+private var isSuccess: Bool?
+
+extension AppointmentsViewController {
+    
+    private func progressDemoHelper(success success: Bool) {
+        isSuccess = success
+        launchTimer()
+    }
+    
+    private func launchTimer() {
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.7 * Double(NSEC_PER_SEC)));
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            progressObject!.completedUnitCount += Int64(arc4random_uniform(30))
+            
+            if isSuccess == false && progressObject?.fractionCompleted >= 0.7 {
+                ARSLineProgress.cancelPorgressWithFailAnimation(true, completionBlock: {
+                    print("Hidden with completion block")
+                })
+                return
+            } else {
+                if progressObject?.fractionCompleted >= 1.0 { return }
+            }
+            
+            self.launchTimer()
+        })
+    }
+    
 }

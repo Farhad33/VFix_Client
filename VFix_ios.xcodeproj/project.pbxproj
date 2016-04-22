@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A02B58A1CC743C50038CD58 /* timesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */; };
+		1A02B58C1CC982490038CD58 /* AppointmentsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A02B58B1CC982490038CD58 /* AppointmentsDetailsVC.swift */; };
 		1A0F9D091CB1BE34002D8780 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */; };
 		1A2F45261C988AA700A2CE25 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45221C988AA700A2CE25 /* Fabric.framework */; };
 		1A2F45271C988AA700A2CE25 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45231C988AA700A2CE25 /* TwitterKit.framework */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timesCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A02B58B1CC982490038CD58 /* AppointmentsDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsDetailsVC.swift; sourceTree = "<group>"; };
 		1A0F9D081CB1BE34002D8780 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1A2F45221C988AA700A2CE25 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1A2F45231C988AA700A2CE25 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				1AC98BCC1CA1D52A00680A79 /* SettingsViewController.swift */,
 				1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */,
 				1AC754DC1CC6D02700B15D96 /* AppointmentsCell.swift */,
+				1A02B58B1CC982490038CD58 /* AppointmentsDetailsVC.swift */,
 				1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */,
 				1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */,
 				1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */,
@@ -394,6 +397,7 @@
 				1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */,
 				1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */,
 				1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */,
+				1A02B58C1CC982490038CD58 /* AppointmentsDetailsVC.swift in Sources */,
 				1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */,
 				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,
 				1AA1CDF71CBD90230013EC78 /* UserVC.swift in Sources */,

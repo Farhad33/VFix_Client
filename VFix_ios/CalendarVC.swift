@@ -30,19 +30,15 @@ var checker2 = true
 class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var timesCollectionView: UICollectionView!
-    
     @IBOutlet weak var calendar: FSCalendar!
     
- 
-
+    
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        self.navigationController!.setNavigationBarHidden(false, animated:true)
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+     appDelegate.Design(navigationController!, View: view)
         
         formatter.dateFormat = "yyyy-MM-dd"
         let calendar2 = NSCalendar.currentCalendar()
@@ -57,38 +53,31 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
         let endOfMonth = calendar2.dateByAddingComponents(comps2, toDate: startOfMonth, options: [])!
         let end = formatter.stringFromDate(endOfMonth)
         print(end)
+        
+        print("Calendar viewDidLoad")
         freeSlots(start, endDate: end)
+        timesCollectionView.reloadData()
         
         
-//        super.viewDidLoad()
-//        self.navigationController!.setNavigationBarHidden(false, animated:true)
-//        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-//        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//        
-//        
-//        print("Calendar viewDidLoad")
-////        print(MainViewController.service)
-//        
-//        
-//        formatter.dateFormat = "yyyy-MM-dd"
-//        let calendar2 = NSCalendar.currentCalendar()
-//        let date = NSDate()
-//        let components = calendar2.components([.Year, .Month], fromDate: date)
-//        let startOfMonth = calendar2.dateFromComponents(components)!
-//        let start = formatter.stringFromDate(startOfMonth)
-//        print(start)
-//        let comps2 = NSDateComponents()
-//        comps2.month = 1
-//        comps2.day = -1
-//        let endOfMonth = calendar2.dateByAddingComponents(comps2, toDate: startOfMonth, options: [])!
-//        let end = formatter.stringFromDate(endOfMonth)
-//        print(end)
-//        freeSlots(start, endDate: end)
-        
-
-      
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        timesCollectionView.reloadData()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        timesCollectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timesCollectionView.reloadData()
+    }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        timesCollectionView.reloadData()
     }
     
     
@@ -102,12 +91,13 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
     
     func calendar(calendar: FSCalendar, didSelectDate date: NSDate) {
         
-        collectionArray.removeAll()
+       // collectionArray.removeAll()
         formatter.dateFormat = "yyyy-MM-dd"
         let selectedDate = formatter.stringFromDate(date)
         
         for (_, i) in availableSlots["items"] {
             if selectedDate == i["day"].stringValue {
+                collectionArray.removeAll()
                 for (_, j) in i["slots"] {
                     collectionArray.append(j.stringValue)
                 }
@@ -162,7 +152,9 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
     }
     
     
-    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionArray.count
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print(collectionArray[indexPath.row])
@@ -196,14 +188,12 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
     
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionArray.count
-    }
+   
     
-    override func viewWillAppear(animated: Bool) {
-        print("Calendar View will Appear")
-        
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        print("Calendar View will Appear")
+//        
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

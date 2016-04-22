@@ -144,6 +144,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let GGGG = Crashlytics.sharedInstance().setUserEmail("user@fabric.io")
         print("Your Email Is: \(GGGG)")
     }
+    
+    func Refresh(tableView: UITableView) {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 249/255, green: 249/255, blue: 0/255, alpha: 1.0)
+        // (red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                tableView.reloadData()
+                tableView.dg_stopLoading()
+                
+            })
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0))
+            // (red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+    }
+    
+    func Design(NavController: UINavigationController, View: UIView){
+        NavController.setNavigationBarHidden(false, animated:true)
+        NavController.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
+        View.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
+        NavController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        NavController.navigationBar.tintColor = UIColor.whiteColor()
+    }
 
 
 

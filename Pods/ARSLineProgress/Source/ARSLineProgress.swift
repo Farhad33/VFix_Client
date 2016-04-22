@@ -144,25 +144,25 @@ public struct ARSLineProgressConfiguration {
     public static var circleColorMiddle: CGColor = UIColor.ars_colorWithRGB(82.0, green: 124.0, blue: 194.0, alpha: 1.0).CGColor
     public static var circleColorInner: CGColor = UIColor.ars_colorWithRGB(60.0, green: 132.0, blue: 196.0, alpha: 1.0).CGColor
     
-    public static var circleRotationDurationOuter: CFTimeInterval = 3.0
-    public static var circleRotationDurationMiddle: CFTimeInterval = 1.5
-    public static var circleRotationDurationInner: CFTimeInterval = 0.75
+    public static var circleRotationDurationOuter: CFTimeInterval = 2.0
+    public static var circleRotationDurationMiddle: CFTimeInterval = 1.0
+    public static var circleRotationDurationInner: CFTimeInterval = 0.5
     
     public static var checkmarkAnimationDrawDuration: CFTimeInterval = 0.4
     public static var checkmarkLineWidth: CGFloat = 2.0
-    public static var checkmarkColor: CGColor = UIColor.ars_colorWithRGB(130.0, green: 149.0, blue: 173.0, alpha: 1.0).CGColor
+    public static var checkmarkColor: CGColor = UIColor.ars_colorWithRGB(20.0, green: 157.0, blue: 234.0, alpha: 1.0).CGColor
     
     public static var successCircleAnimationDrawDuration: CFTimeInterval = 0.7
     public static var successCircleLineWidth: CGFloat = 2.0
-    public static var successCircleColor: CGColor = UIColor.ars_colorWithRGB(130.0, green: 149.0, blue: 173.0, alpha: 1.0).CGColor
+    public static var successCircleColor: CGColor = UIColor.ars_colorWithRGB(20.0, green: 157.0, blue: 234.0, alpha: 1.0).CGColor
     
     public static var failCrossAnimationDrawDuration: CFTimeInterval = 0.4
     public static var failCrossLineWidth: CGFloat = 2.0
-    public static var failCrossColor: CGColor = UIColor.ars_colorWithRGB(130.0, green: 149.0, blue: 173.0, alpha: 1.0).CGColor
+    public static var failCrossColor: CGColor = UIColor.redColor().CGColor
     
     public static var failCircleAnimationDrawDuration: CFTimeInterval = 0.7
     public static var failCircleLineWidth: CGFloat = 2.0
-    public static var failCircleColor: CGColor = UIColor.ars_colorWithRGB(130.0, green: 149.0, blue: 173.0, alpha: 1.0).CGColor
+    public static var failCircleColor: CGColor = UIColor.redColor().CGColor
     
     /**
         Use this function to restore all properties to their default values.
@@ -179,9 +179,9 @@ public struct ARSLineProgressConfiguration {
         ars_config.circleColorMiddle = UIColor.ars_colorWithRGB(82.0, green: 124.0, blue: 194.0, alpha: 1.0).CGColor
         ars_config.circleColorInner = UIColor.ars_colorWithRGB(60.0, green: 132.0, blue: 196.0, alpha: 1.0).CGColor
         
-        ars_config.circleRotationDurationOuter = 3.0
-        ars_config.circleRotationDurationMiddle = 1.5
-        ars_config.circleRotationDurationInner = 0.75
+        ars_config.circleRotationDurationOuter = 2.0
+        ars_config.circleRotationDurationMiddle = 1.0
+        ars_config.circleRotationDurationInner = 0.5
         
         ars_config.checkmarkAnimationDrawDuration = 0.4
         ars_config.checkmarkLineWidth = 2.0

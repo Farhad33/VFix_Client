@@ -12,7 +12,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     
     
     
-    
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var resizedImage:UIImage!
     let imagePicker = UIImagePickerController()
     var image = UIImage()
@@ -37,11 +37,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        
-        self.navigationController?.navigationBar.barTintColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
-        self.view.backgroundColor = UIColor(hue: 212/360, saturation: 7/100, brightness: 100/100, alpha: 1.0)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.View1.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
+        appDelegate.Design(navigationController!, View: view)
         
         
         FirstNameTextField.text = defaults.stringForKey("firstName")
