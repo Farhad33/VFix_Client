@@ -69,10 +69,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         CapturedPic.clipsToBounds = true
     }
     
-    
-    
-    
-    
+     
     override func viewWillDisappear(animated: Bool)
     {
         let FirstName = FirstNameTextField.text
@@ -98,7 +95,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         defaults.setObject(PostalCode, forKey: "ppostalCode")
       //  defaults.setObject(ProfileJPG, forKey: "image")
         
-        userDefaults.synchronize()
+//        userDefaults.synchronize()
     }
     
     
@@ -238,7 +235,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate,UINavigat
         
         let check5 = false
         defaults.setBool(check5, forKey: "BoooL")
-        userDefaults.synchronize()
+//        userDefaults.synchronize()
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

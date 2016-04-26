@@ -39,6 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if check4 == false {
         self.app.beginIgnoringInteractionEvents()
         
+        
         }
         services.removeAll()
         NetworkRequest()
@@ -48,53 +49,38 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func NetworkRequest() {
+        if ARSLineProgress.shown { return }
+        ARSLineProgress.showWithPresentCompetionBlock { () -> Void in
+            print("Showed with completion block")
+        }
         Alamofire.request(.GET, "\(BaseUrl)\(Id)?apiKey=\(Key)&token=\(Token)")
             .responseJSON { response in
-                
                 if response.result.isSuccess{
-                    
-                    self.check4 = self.defaults.boolForKey("BoooLE")
-                    if self.check4 == false {
-                        if ARSLineProgress.shown { return }
-                        
-                        progressObject = NSProgress(totalUnitCount: 5)
-                        ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
-                            print("Success completion block")
-                            self.view.userInteractionEnabled = true
-                            self.app.endIgnoringInteractionEvents()
-                        })
-                        
-                        self.progressDemoHelper(success: true)
-                        self.check4 = true
-                        self.defaults.setBool(self.check4, forKey: "BoooLE")
-                    }
-                    print("success")
                     if let value = response.result.value {
                         let values = JSON(value)
                         for (_,i) in values["items"] {
                             services.append(i)
                         }
                     }
-                    self.tableView.reloadData()
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                        ARSLineProgress.hideWithCompletionBlock({ () -> Void in
+                            print("Hidden with completion block")
+                        })
+                    })
+                    ARSLineProgress.showSuccess()
                     self.tableView.dataSource = self
                     self.tableView.delegate = self
                     self.tableView.reloadData()
-                }else{
-                    if ARSLineProgress.shown { return }
-                    
-                    progressObject = NSProgress(totalUnitCount: 100)
-                    
-                    ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
-                        print("This copmletion block is going to be overriden by cancel completion block in launchTimer() method.")
-                    })
-                    
-                    self.progressDemoHelper(success: false)
+                    self.view.userInteractionEnabled = true
                     self.app.endIgnoringInteractionEvents()
-                    self.check4 = true
-                    self.defaults.setBool(self.check4, forKey: "BoooLE")
+                }else{
+                    ARSLineProgress.showFail()
+                    self.app.endIgnoringInteractionEvents()
                 }
         }
     }
+    
+    
     
     
     override func viewDidAppear(animated: Bool) {
@@ -119,7 +105,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         appDelegate.DrawerContainer!.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
     }
     
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        makeAppointment.service = services[indexPath.row]["id"].stringValue
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -142,12 +130,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 private var progress: CGFloat = 0.0
 private var progressObject: NSProgress?
-private var isSuccess: Bool?
+private var Success: Bool?
 
 extension MainViewController {
     
     private func progressDemoHelper(success success: Bool) {
-        isSuccess = success
+        Success = success
         launchTimer()
     }
     
@@ -157,7 +145,7 @@ extension MainViewController {
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             progressObject!.completedUnitCount += Int64(arc4random_uniform(30))
             
-            if isSuccess == false && progressObject?.fractionCompleted >= 0.7 {
+            if Success == false && progressObject?.fractionCompleted >= 0.7 {
                 ARSLineProgress.cancelPorgressWithFailAnimation(true, completionBlock: {
                     print("Hidden with completion block")
                 })

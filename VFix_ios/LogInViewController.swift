@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
+import Parse
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -20,7 +21,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
     var refreshAlert = UIAlertController(title: "Log out", message: "This action is irriversable. Are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
-    
+    var errorMessage = "Please try again later"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    
+    
     // implement Twitter Login
     func ImplementTwitterLogin(){
         let LogInButton = TWTRLogInButton { (session, error) in
@@ -72,9 +76,9 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         let label = View.subviews.first as! UILabel
         label.text = "       Log in with Twitter              "
         self.view.addSubview(LogInButton)
-        
-        
     }
+    
+    
     
     // implement Facebook Login
     func ImplementFacebookLogin(){
@@ -95,6 +99,8 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.addSubview(loginButton)
     }
     
+    
+    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
         if error == nil {
@@ -106,39 +112,43 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User logged out")
     }
     
+    
+    
+    func displayError(title: String,_ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func onLogging(sender: AnyObject) {
+
         let username = emailText.text
         let password = passwordText.text
-        var checkUser = defaults.stringForKey("email")
-        let checkPass = defaults.stringForKey("password")
         
-        if emailText.text == "" || emailText.text == nil {
-            var refreshAlert = UIAlertController(title: "Error", message: "Please Insert Email", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if passwordText.text == "" || passwordText.text == nil {
-            var refreshAlert = UIAlertController(title: "Error", message: "Password Required", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if username == checkUser && checkPass == password {
-                appDelegate.BuildUserInterface()
-        } else if username != checkUser {
-                var refreshAlert = UIAlertController(title: "Error", message: "Username Don't Exist \n Please Sign Up", preferredStyle: UIAlertControllerStyle.Alert)
-                refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                }))
-                presentViewController(refreshAlert, animated: true, completion: nil)
-        } else {
-            var refreshAlert = UIAlertController(title: "Error", message: "Wrong Password \n Please Enter Correct Password", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
+        PFUser.logInWithUsernameInBackground(username!, password: password!) { (user: PFUser?, error: NSError?) -> Void in
+            if let error = error {
+                if let errorString = error.userInfo["error"] as? String {
+                    self.errorMessage = errorString
+                    self.displayError("Failed to Sign up", self.errorMessage)
+                }
+                print(error.localizedDescription)
+            } else {
+                print("User logged in successfully")
+                self.appDelegate.BuildUserInterface()
+                // manually segue to logged in view
+            }
+            
         }
+        
         view.endEditing(true)
         }
     

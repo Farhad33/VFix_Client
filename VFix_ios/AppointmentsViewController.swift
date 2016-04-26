@@ -18,9 +18,9 @@ import ARSLineProgress
 private var Token = "22719873bdbb43cf0cc7f77d6e857e9e"
 private var Key = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
 private var BaseUrl = "http://www.agendize.com/api/2.0/scheduling/companies/13772899/appointments?clientId="
-private var Id = "23830345"
-var json: JSON!
-var appointments: Array = [JSON]()
+private var Id = "13804501"
+private var json: JSON!
+private var appointments: Array = [JSON]()
 
 class AppointmentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -32,7 +32,7 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
     var app = UIApplication.sharedApplication()
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,51 +40,93 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         self.app.beginIgnoringInteractionEvents()
         NetworkRequest()
-        appDelegate.Refresh(tableView)
+        Refresh1(tableView)
         
     }
     
     
     
     func NetworkRequest()  {
+        if ARSLineProgress.shown { return }
+        ARSLineProgress.showWithPresentCompetionBlock { () -> Void in
+            print("Showed with completion block")
+        }
         Alamofire.request(.GET, "\(BaseUrl)\(Id)&token=\(Token)&apiKey=\(Key)")
             .responseJSON { response in
-                
                 if response.result.isSuccess{
-                    
-                    if ARSLineProgress.shown { return }
-                    
-                        progressObject = NSProgress(totalUnitCount: 1)
-                        ARSLineProgress.showWithProgressObject(progressObject!, completionBlock: {
-                        print("Success completion block")
-                       // ARSLineProgress.showSuccess()
-                        self.view.userInteractionEnabled = true
-                        self.app.endIgnoringInteractionEvents()
-                        self.tableView.reloadData()
-                    })
-                    
-                    self.progressDemoHelper(success: true)
-                    print("success")
                     appointments.removeAll()
                     if let value = response.result.value {
                         let values = JSON(value)
                         for (_, i) in values["items"]{
                             appointments.append(i)
                         }
-                        print(appointments)
+                       // print(appointments)
                     }
-                }else{
                     
-                    print("dumb shit")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                        ARSLineProgress.hideWithCompletionBlock({ () -> Void in
+                            print("Hidden with completion block")
+                        })
+                    })
+                    ARSLineProgress.showSuccess()
+                    self.tableView.dataSource = self
+                    self.tableView.delegate = self
+                    self.tableView.reloadData()
+                    self.view.userInteractionEnabled = true
+                    self.app.endIgnoringInteractionEvents()
+                }else{
+                    ARSLineProgress.showFail()
+                    self.app.endIgnoringInteractionEvents()
                 }
                 
         }
-        
-        
     }
+    
+    
+    
+    func NetworkRequest1()  {
+        Alamofire.request(.GET, "\(BaseUrl)\(Id)&token=\(Token)&apiKey=\(Key)")
+            .responseJSON { response in
+                if response.result.isSuccess{
+                    appointments.removeAll()
+                    if let value = response.result.value {
+                        let values = JSON(value)
+                        for (_, i) in values["items"]{
+                            appointments.append(i)
+                        }
+                        // print(appointments)
+                    }
+                    self.tableView.reloadData()
+                }else{
+                }
+                
+        }
+    }
+    
+    func Refresh1(TableView: UITableView) {
+        print("Refresh  1")
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 249/255, green: 249/255, blue: 0/255, alpha: 1.0)
+        // (red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                self?.NetworkRequest1()
+                TableView.reloadData()
+                TableView.dg_stopLoading()
+                print("Refresh  2")
+            })
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0))
+        // (red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        print("Refresh  3")
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,7 +135,7 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-            return appointments.count
+        return appointments.count
     }
     
     
@@ -153,6 +195,9 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
+    deinit {
+        self.tableView.dg_removePullToRefresh()
+    }
 }
 
 
@@ -160,12 +205,12 @@ class AppointmentsViewController: UIViewController, UITableViewDelegate, UITable
 
 private var progress: CGFloat = 0.0
 private var progressObject: NSProgress?
-private var isSuccess: Bool?
+private var Success: Bool?
 
 extension AppointmentsViewController {
     
     private func progressDemoHelper(success success: Bool) {
-        isSuccess = success
+        Success = success
         launchTimer()
     }
     
@@ -175,7 +220,7 @@ extension AppointmentsViewController {
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             progressObject!.completedUnitCount += Int64(arc4random_uniform(30))
             
-            if isSuccess == false && progressObject?.fractionCompleted >= 0.7 {
+            if Success == false && progressObject?.fractionCompleted >= 0.7 {
                 ARSLineProgress.cancelPorgressWithFailAnimation(true, completionBlock: {
                     print("Hidden with completion block")
                 })
@@ -189,3 +234,11 @@ extension AppointmentsViewController {
     }
     
 }
+
+
+
+
+
+
+
+

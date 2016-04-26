@@ -13,28 +13,30 @@ import Alamofire
 import FSCalendar
 
 
-var sessionToken = "22719873bdbb43cf0cc7f77d6e857e9e"
-var baseUrl = "companies/13772899/widget/freeSlots?serviceId=13772901&startDate=2016-04-18&endDate=2016-04-19"
-let APIKey = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
-let Url = "https://www.agendize.com/api/2.0/scheduling/"
-var endPoint = "companies/13772899/widget/freeSlots?serviceId=13772901"
 
-var text: String?
-var availableSlots: JSON!
-let formatter = NSDateFormatter()
-let formatter2 = NSDateFormatter()
-var collectionArray = [String]()
-var checker = true
-var checker2 = true
 
 class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    private var sessionToken = "22719873bdbb43cf0cc7f77d6e857e9e"
+    private var baseUrl = "companies/13772899/widget/freeSlots?serviceId=13772901&startDate=2016-04-18&endDate=2016-04-19"
+    private let APIKey = "f8d0c6b95ab7f5316a7bff112b40bfd2def192a0"
+    private let Url = "https://www.agendize.com/api/2.0/scheduling/"
+    private var endPoint = "companies/13772899/widget/freeSlots?serviceId=13772901"
+    
+    private var text: String?
+    private var availableSlots: JSON!
+    private let formatter = NSDateFormatter()
+    private let formatter2 = NSDateFormatter()
+    private var collectionArray = [String]()
+    private var checker = true
+    private var checker2 = true
     
     @IBOutlet weak var timesCollectionView: UICollectionView!
     @IBOutlet weak var calendar: FSCalendar!
     
     
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +59,26 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
         print("Calendar viewDidLoad")
         freeSlots(start, endDate: end)
         timesCollectionView.reloadData()
+    }
+    
+    
+    func DisError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func OnNext(sender: AnyObject) {
+        if makeAppointment.dateValidation {
+            performSegueWithIdentifier("toDetailsSegue", sender: nil)
+        }else{
+            DisError("Error", message: "Please pick a time")
+        }
         
     }
+    
     
     
     override func viewDidAppear(animated: Bool) {
@@ -119,11 +138,11 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
             .responseJSON { response in
                 if response.result.isSuccess {
                     if let value = response.result.value {
-                        availableSlots = JSON(value)
+                        self.availableSlots = JSON(value)
                         
-                        if checker {
+                        if self.checker {
                             self.configureCalendar()
-                            checker = false
+                            self.checker = false
                         }
                     }
                 } else {
@@ -131,8 +150,6 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
                 }
         }
     }
-    
-    
     
     func calendarCurrentMonthDidChange(calendar: FSCalendar) {
         let startOftheMonth = calendar.currentMonth
@@ -158,11 +175,11 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print(collectionArray[indexPath.row])
+        makeAppointment.dateTime = collectionArray[indexPath.row]
     }
     
     
-    
-    
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = timesCollectionView.dequeueReusableCellWithReuseIdentifier("timesCollectionViewCell", forIndexPath: indexPath) as! timesCollectionViewCell
         let temp = collectionArray[indexPath.row].componentsSeparatedByString("T")
@@ -184,11 +201,6 @@ class CalendarVC: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UI
         
         return cell
     }
-    
-    
-    
-    
-   
     
 //    override func viewWillAppear(animated: Bool) {
 //        print("Calendar View will Appear")

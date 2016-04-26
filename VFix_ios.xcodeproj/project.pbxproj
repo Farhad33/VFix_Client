@@ -14,16 +14,11 @@
 		1A2F45271C988AA700A2CE25 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45231C988AA700A2CE25 /* TwitterKit.framework */; };
 		1A2F45281C988AA700A2CE25 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */; };
 		1A2F45291C988AA700A2CE25 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2F45251C988AA700A2CE25 /* TwitterCore.framework */; };
-		1A30D28F1CC71BEF0056E51E /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D28A1CC71BEF0056E51E /* DGElasticPullToRefreshConstants.swift */; };
-		1A30D2901CC71BEF0056E51E /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D28B1CC71BEF0056E51E /* DGElasticPullToRefreshExtensions.swift */; };
-		1A30D2911CC71BEF0056E51E /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D28C1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingView.swift */; };
-		1A30D2921CC71BEF0056E51E /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D28D1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
-		1A30D2931CC71BEF0056E51E /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A30D28E1CC71BEF0056E51E /* DGElasticPullToRefreshView.swift */; };
 		1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A58B0321C9B5537006F0FBB /* LogInViewController.swift */; };
-		1A6FD1AE1CBDD43300CADAF4 /* AppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */; };
+		1A6FD1AE1CBDD43300CADAF4 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AD1CBDD43300CADAF4 /* Appointment.swift */; };
 		1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */; };
-		1AA1CDF71CBD90230013EC78 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1CDF61CBD90230013EC78 /* UserVC.swift */; };
 		1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */; };
+		1AA3E22A1CCEDDD900DDC2FE /* KKKKKVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */; };
 		1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A51CB089C7007A8D4E /* CalendarVC.swift */; };
 		1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */; };
 		1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */; };
@@ -32,6 +27,11 @@
 		1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */; };
 		1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */; };
 		1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */; };
+		1ACAB1EB1CD00A020015626D /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAB1E61CD00A020015626D /* DGElasticPullToRefreshConstants.swift */; };
+		1ACAB1EC1CD00A020015626D /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAB1E71CD00A020015626D /* DGElasticPullToRefreshExtensions.swift */; };
+		1ACAB1ED1CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAB1E81CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift */; };
+		1ACAB1EE1CD00A020015626D /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAB1E91CD00A020015626D /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		1ACAB1EF1CD00A020015626D /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAB1EA1CD00A020015626D /* DGElasticPullToRefreshView.swift */; };
 		1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */; };
 		1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */; };
 		1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */; };
@@ -42,6 +42,7 @@
 		1C65AE421C768E0E00D87EE0 /* VFixPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C65AE411C768E0E00D87EE0 /* VFixPageViewController.swift */; };
 		1C93CAAB1C7F998A00B43CB3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93CAAA1C7F998A00B43CB3 /* ContainerViewController.swift */; };
 		1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93CAAE1C7FADA300B43CB3 /* SignUpViewController.swift */; };
+		1CEC2A1D1CCC726D00EF9115 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEC2A1C1CCC726D00EF9115 /* Client.swift */; };
 		639842C01C8F8DF100453C31 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639842BF1C8F8DF100453C31 /* FBSDKCoreKit.framework */; };
 		639842C21C8F8DFC00453C31 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639842C11C8F8DFC00453C31 /* FBSDKLoginKit.framework */; };
 		81947EEE30F726BB6FC85002 /* Pods_VFix_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E9587383E26F3DFDCCF1C7 /* Pods_VFix_ios.framework */; };
@@ -55,16 +56,11 @@
 		1A2F45231C988AA700A2CE25 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		1A2F45241C988AA700A2CE25 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		1A2F45251C988AA700A2CE25 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
-		1A30D28A1CC71BEF0056E51E /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
-		1A30D28B1CC71BEF0056E51E /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
-		1A30D28C1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
-		1A30D28D1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
-		1A30D28E1CC71BEF0056E51E /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		1A58B0321C9B5537006F0FBB /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsVC.swift; sourceTree = "<group>"; };
+		1A6FD1AD1CBDD43300CADAF4 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
-		1AA1CDF61CBD90230013EC78 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VfixClient.swift; sourceTree = "<group>"; };
+		1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKKKKVC.swift; sourceTree = "<group>"; };
 		1AA993A51CB089C7007A8D4E /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInfosDetailVC.swift; sourceTree = "<group>"; };
@@ -73,6 +69,11 @@
 		1AC98BCE1CA1D8B000680A79 /* AppointmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		1AC98BD01CA1D8CC00680A79 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		1AC98BD21CA1D8EC00680A79 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		1ACAB1E61CD00A020015626D /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
+		1ACAB1E71CD00A020015626D /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		1ACAB1E81CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
+		1ACAB1E91CD00A020015626D /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
+		1ACAB1EA1CD00A020015626D /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		1ACDFCFA1C98C3EA00AA4EC9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1AD9510A1CA4AD22005E7109 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		1AFA9CAB1C9DFF17003C9E11 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		1C65AE411C768E0E00D87EE0 /* VFixPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFixPageViewController.swift; sourceTree = "<group>"; };
 		1C93CAAA1C7F998A00B43CB3 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		1C93CAAE1C7FADA300B43CB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1CEC2A1C1CCC726D00EF9115 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		5E26A602813DBDE5AECC82FD /* Pods-VFix_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFix_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-VFix_ios/Pods-VFix_ios.release.xcconfig"; sourceTree = "<group>"; };
 		639842BF1C8F8DF100453C31 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		639842C11C8F8DFC00453C31 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -110,24 +112,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A30D2891CC71BEF0056E51E /* DGElasticPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				1A30D28A1CC71BEF0056E51E /* DGElasticPullToRefreshConstants.swift */,
-				1A30D28B1CC71BEF0056E51E /* DGElasticPullToRefreshExtensions.swift */,
-				1A30D28C1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingView.swift */,
-				1A30D28D1CC71BEF0056E51E /* DGElasticPullToRefreshLoadingViewCircle.swift */,
-				1A30D28E1CC71BEF0056E51E /* DGElasticPullToRefreshView.swift */,
-			);
-			name = DGElasticPullToRefresh;
-			path = "../../../../../../Downloads/DGElasticPullToRefresh-master/DGElasticPullToRefresh";
-			sourceTree = "<group>";
-		};
 		1AA1CDF51CBD8F0F0013EC78 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1AA1CDF61CBD90230013EC78 /* UserVC.swift */,
-				1A6FD1AD1CBDD43300CADAF4 /* AppointmentsVC.swift */,
+				1A6FD1AD1CBDD43300CADAF4 /* Appointment.swift */,
+				1CEC2A1C1CCC726D00EF9115 /* Client.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -157,8 +146,22 @@
 				1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */,
 				1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */,
 				1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */,
+				1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		1ACAB1E51CD00A020015626D /* DGElasticPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				1ACAB1E61CD00A020015626D /* DGElasticPullToRefreshConstants.swift */,
+				1ACAB1E71CD00A020015626D /* DGElasticPullToRefreshExtensions.swift */,
+				1ACAB1E81CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift */,
+				1ACAB1E91CD00A020015626D /* DGElasticPullToRefreshLoadingViewCircle.swift */,
+				1ACAB1EA1CD00A020015626D /* DGElasticPullToRefreshView.swift */,
+			);
+			name = DGElasticPullToRefresh;
+			path = "../../../../../../Downloads/DGElasticPullToRefresh-master/DGElasticPullToRefresh";
 			sourceTree = "<group>";
 		};
 		1C65AE231C76860500D87EE0 = {
@@ -189,7 +192,7 @@
 		1C65AE2E1C76860500D87EE0 /* VFix_ios */ = {
 			isa = PBXGroup;
 			children = (
-				1A30D2891CC71BEF0056E51E /* DGElasticPullToRefresh */,
+				1ACAB1E51CD00A020015626D /* DGElasticPullToRefresh */,
 				1AA1CDF81CBD902C0013EC78 /* API */,
 				1AA1CDF51CBD8F0F0013EC78 /* Models */,
 				1AC98BCB1CA1D22100680A79 /* Menu */,
@@ -377,33 +380,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A30D2901CC71BEF0056E51E /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				1C65AE421C768E0E00D87EE0 /* VFixPageViewController.swift in Sources */,
 				1ACDFCFB1C98C3EA00AA4EC9 /* MainViewController.swift in Sources */,
 				1AC98BD31CA1D8EC00680A79 /* SupportViewController.swift in Sources */,
 				1A58B0331C9B5537006F0FBB /* LogInViewController.swift in Sources */,
 				1A02B58A1CC743C50038CD58 /* timesCollectionViewCell.swift in Sources */,
-				1A30D2931CC71BEF0056E51E /* DGElasticPullToRefreshView.swift in Sources */,
 				1C93CAAB1C7F998A00B43CB3 /* ContainerViewController.swift in Sources */,
 				1AC98BCF1CA1D8B000680A79 /* AppointmentsViewController.swift in Sources */,
+				1ACAB1EE1CD00A020015626D /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */,
+				1ACAB1ED1CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */,
-				1A6FD1AE1CBDD43300CADAF4 /* AppointmentsVC.swift in Sources */,
-				1A30D2921CC71BEF0056E51E /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
+				1AA3E22A1CCEDDD900DDC2FE /* KKKKKVC.swift in Sources */,
+				1A6FD1AE1CBDD43300CADAF4 /* Appointment.swift in Sources */,
 				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */,
 				1C65AE301C76860500D87EE0 /* AppDelegate.swift in Sources */,
+				1CEC2A1D1CCC726D00EF9115 /* Client.swift in Sources */,
 				1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */,
 				1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */,
 				1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */,
 				1AD9510B1CA4AD22005E7109 /* EditProfileVC.swift in Sources */,
 				1A02B58C1CC982490038CD58 /* AppointmentsDetailsVC.swift in Sources */,
+				1ACAB1EB1CD00A020015626D /* DGElasticPullToRefreshConstants.swift in Sources */,
 				1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */,
 				1AC98BCD1CA1D52A00680A79 /* SettingsViewController.swift in Sources */,
-				1AA1CDF71CBD90230013EC78 /* UserVC.swift in Sources */,
 				1AC754DD1CC6D02700B15D96 /* AppointmentsCell.swift in Sources */,
-				1A30D28F1CC71BEF0056E51E /* DGElasticPullToRefreshConstants.swift in Sources */,
-				1A30D2911CC71BEF0056E51E /* DGElasticPullToRefreshLoadingView.swift in Sources */,
+				1ACAB1EF1CD00A020015626D /* DGElasticPullToRefreshView.swift in Sources */,
+				1ACAB1EC1CD00A020015626D /* DGElasticPullToRefreshExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

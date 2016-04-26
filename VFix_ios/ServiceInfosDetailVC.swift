@@ -12,61 +12,35 @@ import MMDrawerController
 class ServiceInfosDetailVC: UIViewController {
     
     
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var AddressTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var CityTextField: UITextField!
     @IBOutlet weak var StateTextField: UITextField!
     @IBOutlet weak var PostalCodeTextField: UITextField!
     
-    var defaults = NSUserDefaults.standardUserDefaults()
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        appDelegate.Design(navigationController!, View: view)
-        
-      
-        AddressTextField.text = defaults.stringForKey("addressLine1")
-        CityTextField.text = defaults.stringForKey("city")
-        StateTextField.text = defaults.stringForKey("state")
-        PostalCodeTextField.text = defaults.stringForKey("postalCode")
-        
+        getClient()
     }
-
+    
+    
     override func viewWillAppear(animated: Bool) {
         print("View will Appear 1")
-    
-        let check = defaults.boolForKey("BoooL")
-        
-        if check == true {
-            print("View will Appear 2")
-        AddressTextField.text = defaults.stringForKey("addressLine11")
-        CityTextField.text = defaults.stringForKey("city1")
-        StateTextField.text = defaults.stringForKey("state1")
-        PostalCodeTextField.text = defaults.stringForKey("postalCode1")
-        }
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         print("View Will Disappear")
-        var check2 = true
-    
-        defaults.setBool(check2, forKey: "BoooL")
-        
-        let AddressLine11 = AddressTextField.text
-        let City = CityTextField.text
-        let State = StateTextField.text
-        let PostalCode = PostalCodeTextField.text
-        
-        
-        defaults.setObject(AddressLine11, forKey: "addressLine11")
-        defaults.setObject(City, forKey: "city1")
-        defaults.setObject(State, forKey: "state1")
-        defaults.setObject(PostalCode, forKey: "postalCode1")
+        setClient()
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,60 +50,54 @@ class ServiceInfosDetailVC: UIViewController {
         view.endEditing(true)
     }
     
+    
+    func getClient() {
+        firstNameTextField.text! = makeClient.firstName
+        lastNameTextField.text! = makeClient.lastName
+        emailAddressTextField.text! = makeClient.email
+        phoneNumberTextField.text! = makeClient.phone
+        AddressTextField.text! = makeClient.street
+        CityTextField.text! = makeClient.city
+        StateTextField.text! = makeClient.state
+        PostalCodeTextField.text! = makeClient.zipCode
+    }
+    
+    
+    func setClient() {
+        makeClient.firstName = firstNameTextField.text!
+        makeClient.lastName = lastNameTextField.text!
+        makeClient.email = emailAddressTextField.text!
+        makeClient.phone = phoneNumberTextField.text!
+        makeClient.street = AddressTextField.text!
+        makeClient.city = CityTextField.text!
+        makeClient.state = StateTextField.text!
+        makeClient.zipCode = PostalCodeTextField.text!
+    }
+    
+    
     @IBAction func OnSave(sender: AnyObject) {
-        let AddressLine11 = AddressTextField.text
-        let City = CityTextField.text
-        let State = StateTextField.text
-        let PostalCode = PostalCodeTextField.text
         
+        setClient()
         
-        defaults.setObject(AddressLine11, forKey: "addressLine11")
-        defaults.setObject(City, forKey: "city1")
-        defaults.setObject(State, forKey: "state1")
-        defaults.setObject(PostalCode, forKey: "postalCode1")
-        
-        if AddressLine11 == nil || AddressLine11 == "" {
-            var refreshAlert = UIAlertController(title: "Address Is Missing", message: "Please Inter an Address", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if City == nil || City == "" {
-            var refreshAlert = UIAlertController(title: "City Is Missing", message: "Please Inter an City", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if State == nil || State == "" {
-            var refreshAlert = UIAlertController(title: "State Is Missing", message: "Please Inter an State", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if PostalCode == nil || PostalCode == "" {
-            var refreshAlert = UIAlertController(title: "Postal Code Is Missing", message: "Please Inter an Postal Code", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else {
-            
-            let ServiceAddress = AddressTextField.text
-            let ServiceCity = CityTextField.text
-            let ServiceState = StateTextField.text
-            let ServicePostalCode = PostalCodeTextField.text
-            
-            
-            defaults.setObject(ServiceAddress, forKey: "serviceAddress")
-            defaults.setObject(ServiceCity, forKey: "serviceCity")
-            defaults.setObject(ServiceState, forKey: "serviceState")
-            defaults.setObject(ServicePostalCode, forKey: "servicePostalCode")
-            
-          //  self.performSegueWithIdentifier("ServiceToAppointments", sender: self)
-            
-            var refreshAlert = UIAlertController(title: "Reservation Compete", message: "Thanks For Using Vfix", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                var appointmentsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AppointmentsViewController") as! AppointmentsViewController
-                var appointmentsPageNav = UINavigationController(rootViewController: appointmentsViewController)
+        if makeClient.ValidAll {
+
+            let refreshAlert = UIAlertController(title: "Reservation Complete", message: "Thank you for using VFix", preferredStyle: UIAlertControllerStyle.Alert)
+            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default,
+                handler: { (action: UIAlertAction!) in
+                let appointmentsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AppointmentsViewController") as! AppointmentsViewController
+                let appointmentsPageNav = UINavigationController(rootViewController: appointmentsViewController)
                 self.appDelegate.DrawerContainer!.centerViewController = appointmentsPageNav
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "One or all of the fields are missing", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
         }
     }
+    
 }
+

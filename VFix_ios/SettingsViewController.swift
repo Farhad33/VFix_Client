@@ -14,98 +14,64 @@ import SwiftyJSON
 
 class SettingsViewController: UIViewController {
     
-    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    var defaults = NSUserDefaults.standardUserDefaults()
-    
+    var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate    
     
     @IBOutlet weak var ProfilePicImage: UIImageView!
-    @IBOutlet weak var TitleLabel: UILabel!
-    @IBOutlet weak var NameLabel: UILabel!
-    @IBOutlet weak var EmailLabel: UILabel!
-    @IBOutlet weak var PhoneNumLabel: UILabel!
-    @IBOutlet weak var AddressLineOneLabel: UILabel!
-    @IBOutlet weak var AddressLineTwoLabel: UILabel!
-    @IBOutlet weak var CityLabel: UILabel!
-    @IBOutlet weak var StateLabel: UILabel!
-    @IBOutlet weak var PostalCodeLabel: UILabel!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var AddressTextField: UITextField!
+    @IBOutlet weak var CityTextField: UITextField!
+    @IBOutlet weak var StateTextField: UITextField!
+    @IBOutlet weak var PostalCodeTextField: UITextField!
+    @IBOutlet weak var profileView: UIView!
     
 
+    
+    
+    
+    
+    func getClient() {
+        firstNameTextField.text! = makeClient.firstName
+        lastNameTextField.text! = makeClient.lastName
+        emailAddressTextField.text! = makeClient.email
+        phoneNumberTextField.text! = makeClient.phone
+        AddressTextField.text! = makeClient.street
+        CityTextField.text! = makeClient.city
+        StateTextField.text! = makeClient.state
+        PostalCodeTextField.text! = makeClient.zipCode
+    }
+    
+    
+    func setClient() {
+        makeClient.firstName = firstNameTextField.text!
+        makeClient.lastName = lastNameTextField.text!
+        makeClient.email = emailAddressTextField.text!
+        makeClient.phone = phoneNumberTextField.text!
+        makeClient.street = AddressTextField.text!
+        makeClient.city = CityTextField.text!
+        makeClient.state = StateTextField.text!
+        makeClient.zipCode = PostalCodeTextField.text!
+    }
+    
+    
+    @IBAction func onEditing(sender: AnyObject) {
+//        rightBarButton.
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getClient()
+        
         appDelegate.Design(navigationController!, View: view)
-        
-        UserVC.sharedManager.NetworkRequest()
-        
-        
-        
-        if defaults.stringForKey("firstName") == nil {
-            NameLabel.text = ""
-        } else {
-            NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        }
-        
-        // NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        
-        if defaults.stringForKey("email") == nil {
-            EmailLabel.text = ""
-        } else {
-            EmailLabel.text = "    " + defaults.stringForKey("email")!
-        }
-        
-     //   EmailLabel.text = "    " + defaults.stringForKey("email")!
-        if defaults.stringForKey("phoneNumber") == nil {
-            PhoneNumLabel.text = " "
-        } else {
-            PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
-        }
-        
-        if defaults.stringForKey("addressLine1") == nil {
-            AddressLineOneLabel.text = " "
-        } else {
-            AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
-        }
-        
-        if defaults.stringForKey("addressLine2") == nil {
-            AddressLineTwoLabel.text = " "
-        } else {
-            AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
-        }
-        
-        if defaults.stringForKey("city") == nil {
-            CityLabel.text = " "
-        } else {
-            CityLabel.text = "    " + defaults.stringForKey("city")!
-        }
-        
-        if defaults.stringForKey("state") == nil {
-            StateLabel.text = " "
-        } else {
-            StateLabel.text = "    " + defaults.stringForKey("state")!
-        }
-        
-        if defaults.stringForKey("postalCode") == nil {
-            PostalCodeLabel.text = " "
-        } else {
-            PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
-        }
-        
         
         
         if ProfilePicImage.image == nil {
             ProfilePicImage.image = UIImage(named: "missing.png")
-        } else {
-        if let imgData = defaults.objectForKey("image") as? NSData
-        {
-            if let image = UIImage(data: imgData)
-            {
-                //set image in UIImageView imgSignature
-                self.ProfilePicImage.image = image
-                //remove cache after fetching image data
-          //      defaults.removeObjectForKey("image")
-            }
-        }
         }
         ProfilePicImage.layer.borderWidth = 1
         ProfilePicImage.layer.masksToBounds = false
@@ -113,74 +79,19 @@ class SettingsViewController: UIViewController {
         ProfilePicImage.layer.cornerRadius = ProfilePicImage.frame.height/2
         ProfilePicImage.clipsToBounds = true
         
-   //     ProfilePicImage.image = defaults.u
+    }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        setClient()
     }
     
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        if defaults.stringForKey("firstName") == nil {
-            NameLabel.text = ""
-        } else {
-            NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        }
-        
-        // NameLabel.text = "    " + defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
-        if defaults.stringForKey("email") == nil {
-            EmailLabel.text = ""
-        } else {
-            EmailLabel.text = "    " + defaults.stringForKey("email")!
-        }
-        if defaults.stringForKey("phoneNumber") == nil {
-            PhoneNumLabel.text = " "
-        } else {
-            PhoneNumLabel.text = "    " + defaults.stringForKey("phoneNumber")!
-        }
-        
-        if defaults.stringForKey("addressLine1") == nil {
-            AddressLineOneLabel.text = " "
-        } else {
-            AddressLineOneLabel.text = "    " + defaults.stringForKey("addressLine1")!
-        }
-        
-        if defaults.stringForKey("addressLine2") == nil {
-            AddressLineTwoLabel.text = " "
-        } else {
-            AddressLineTwoLabel.text = "    " + defaults.stringForKey("addressLine2")!
-        }
-        
-        if defaults.stringForKey("city") == nil {
-            CityLabel.text = " "
-        } else {
-            CityLabel.text = "    " + defaults.stringForKey("city")!
-        }
-        
-        if defaults.stringForKey("state") == nil {
-            StateLabel.text = " "
-        } else {
-            StateLabel.text = "    " + defaults.stringForKey("state")!
-        }
-        
-        if defaults.stringForKey("postalCode") == nil {
-            PostalCodeLabel.text = " "
-        } else {
-            PostalCodeLabel.text = "    " + defaults.stringForKey("postalCode")!
-        }
         if ProfilePicImage.image == nil {
             ProfilePicImage.image = UIImage(named: "missing.png")
-        } else {
-        if let imgData = defaults.objectForKey("image") as? NSData
-        {
-            if let image = UIImage(data: imgData)
-            {
-                //set image in UIImageView imgSignature
-                self.ProfilePicImage.image = image
-                //remove cache after fetching image data
-             //   defaults.removeObjectForKey("image")
-            }
-        }
         }
     }
 

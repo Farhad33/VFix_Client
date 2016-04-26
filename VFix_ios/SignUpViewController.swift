@@ -12,6 +12,7 @@ import FBSDKLoginKit
 import TwitterKit
 import Fabric
 import Crashlytics
+import Parse
 
 
 class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -27,7 +28,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var defaults = NSUserDefaults.standardUserDefaults()
     var SSSSSSButton = TWTRLogInButton()
-    
+    var errorMessage = "Please try again later"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,48 +50,52 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    
+    func displayError(title: String,_ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func onSigningUp(sender: AnyObject) {
         
-        var username = emailText.text
-        var password = passwordText.text
-        if defaults.stringForKey("email") == nil {
-            defaults.setObject(username, forKey: "email")
+        let newUser = PFUser()
+        
+        // set user properties
+        newUser.username = emailText.text
+        newUser.email = emailText.text
+        newUser.password = passwordText.text
+        
+        // call sign up function on the object
+        if emailText.text == "" {
+            displayError("Error", "The email field is empty")
+        } else if passwordText.text == "" {
+            displayError("Error", "The password field is empty")
         } else {
-         checkUser = defaults.stringForKey("email")
-        }
- 
-        if emailText.text == "" || emailText.text == nil {
-            var refreshAlert = UIAlertController(title: "Error", message: "Please Insert Email", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else if username == checkUser {
-            var refreshAlert = UIAlertController(title: "Error", message: "Username Exist", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-            print("username exist")
-        } else if passwordText.text == nil || passwordText.text == "" {
-            var refreshAlert = UIAlertController(title: "Error", message: "Password Requiered", preferredStyle: UIAlertControllerStyle.Alert)
-            refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-            }))
-            presentViewController(refreshAlert, animated: true, completion: nil)
-        } else {
-            defaults.setObject(username, forKey: "email")
-            defaults.setObject(password, forKey: "password")
-            appDelegate.BuildUserInterface()
+            newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    if let errorString = error.userInfo["error"] as? String {
+                        self.errorMessage = errorString
+                        self.displayError("Failed to Sign up", self.errorMessage)
+                    }
+                    print(error.localizedDescription)
+                } else {
+                    print("User Registered successfully")
+                    self.appDelegate.BuildUserInterface()
+                    // manually segue to logged in view
+                }
+            }
         }
         
-     
-  
        view.endEditing(true)
       //  self.performSegueWithIdentifier("showNew", sender: self)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     
     // implement Twitter Sign Up
