@@ -23,50 +23,56 @@
                                     <segue destination="Qq2-50-OV6" kind="embed" id="KeL-3E-kbW"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WIn-2M-jFZ">
-                                <rect key="frame" x="127" y="418" width="66" height="37"/>
-                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD6-Az-Pbt">
-                                <rect key="frame" x="31" y="466" width="113" height="33"/>
-                                <color key="backgroundColor" red="0.48118694161225217" green="0.89110344220512827" blue="0.81259477604190056" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signupOrLogin:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="Xkb-Gz-rme"/>
-                                    <segue destination="aIC-Ip-z5C" kind="show" id="IAv-N9-7h2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8T8-4S-MM8">
-                                <rect key="frame" x="187" y="466" width="113" height="33"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
-                                <state key="normal" title="Log in">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signupOrLogin:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="d2k-sv-hau"/>
-                                    <segue destination="gaD-Ie-wuE" kind="show" id="nHJ-Zo-LZe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-qN-ofz">
-                                <rect key="frame" x="88" y="530" width="145" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.97216552495956421" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Log in as a Guest"/>
-                                <connections>
-                                    <action selector="LogInAsGuest:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="y7A-pU-CGo"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkU-xh-G4H">
+                                <rect key="frame" x="25" y="409" width="269" height="144"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8T8-4S-MM8">
+                                        <rect key="frame" x="156" y="33" width="113" height="33"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signupOrLogin:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="d2k-sv-hau"/>
+                                            <segue destination="gaD-Ie-wuE" kind="show" id="nHJ-Zo-LZe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD6-Az-Pbt">
+                                        <rect key="frame" x="-5" y="33" width="113" height="33"/>
+                                        <color key="backgroundColor" red="0.48118694161225217" green="0.89110344220512827" blue="0.81259477604190056" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="16"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signupOrLogin:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="Xkb-Gz-rme"/>
+                                            <segue destination="aIC-Ip-z5C" kind="show" id="IAv-N9-7h2"/>
+                                        </connections>
+                                    </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="WIn-2M-jFZ">
+                                        <rect key="frame" x="90" y="-9" width="89" height="37"/>
+                                        <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </pageControl>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhr-qN-ofz">
+                                        <rect key="frame" x="75" y="106" width="118" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.97216552495956421" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Log in as a Guest"/>
+                                        <connections>
+                                            <action selector="LogInAsGuest:" destination="dTK-Ks-ZTq" eventType="touchUpInside" id="y7A-pU-CGo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hNW-I4-dQ9" firstAttribute="top" secondItem="mYb-5z-s2z" secondAttribute="bottom" id="5FV-PG-voZ"/>
-                            <constraint firstAttribute="trailing" secondItem="mYb-5z-s2z" secondAttribute="trailing" id="829-tR-8F0"/>
-                            <constraint firstItem="mYb-5z-s2z" firstAttribute="leading" secondItem="ojZ-rR-L1z" secondAttribute="leading" id="I7p-9q-hLE"/>
-                            <constraint firstItem="mYb-5z-s2z" firstAttribute="top" secondItem="ojZ-rR-L1z" secondAttribute="top" id="dau-FU-IWf"/>
+                            <constraint firstItem="mYb-5z-s2z" firstAttribute="leading" secondItem="ojZ-rR-L1z" secondAttribute="leading" id="2Na-QP-1p8"/>
+                            <constraint firstItem="hNW-I4-dQ9" firstAttribute="top" secondItem="mYb-5z-s2z" secondAttribute="bottom" id="2tg-Cs-5ra"/>
+                            <constraint firstItem="mYb-5z-s2z" firstAttribute="top" secondItem="ojZ-rR-L1z" secondAttribute="top" id="Cr1-GC-3IF"/>
+                            <constraint firstAttribute="trailing" secondItem="mYb-5z-s2z" secondAttribute="trailing" id="Svm-sc-Czf"/>
+                            <constraint firstItem="lkU-xh-G4H" firstAttribute="centerX" secondItem="ojZ-rR-L1z" secondAttribute="centerX" id="iLH-C8-xpi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Puf-RJ-WJ1"/>

@@ -33,7 +33,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.navigationBarHidden = true
         self.view?.backgroundColor =  UIColor(red: 20/255.0, green: 157/255.0, blue: 234/255.0, alpha: 1.0)
         if defaults.stringForKey("firstName") == nil {
-            NameLabel.text = "??????"
+            NameLabel.text = "Youcef IRATNI"
         } else {
             NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
         }
@@ -64,7 +64,7 @@ class LeftMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if defaults.stringForKey("firstName") == nil {
-            NameLabel.text = "??????"
+            NameLabel.text = "Youcef IRATNI"
         } else {
             NameLabel.text = defaults.stringForKey("firstName")! + " " + defaults.stringForKey("lastName")!
         }
