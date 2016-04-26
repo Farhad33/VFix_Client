@@ -18,7 +18,6 @@
 		1A6FD1AE1CBDD43300CADAF4 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AD1CBDD43300CADAF4 /* Appointment.swift */; };
 		1A6FD1B01CC05DBF00CADAF4 /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */; };
 		1AA1CDFA1CBD9EB00013EC78 /* VfixClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */; };
-		1AA3E22A1CCEDDD900DDC2FE /* KKKKKVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */; };
 		1AA993A61CB089C7007A8D4E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A51CB089C7007A8D4E /* CalendarVC.swift */; };
 		1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */; };
 		1AAFD9AC1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */; };
@@ -60,7 +59,6 @@
 		1A6FD1AD1CBDD43300CADAF4 /* Appointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		1A6FD1AF1CC05DBF00CADAF4 /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
 		1AA1CDF91CBD9EB00013EC78 /* VfixClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VfixClient.swift; sourceTree = "<group>"; };
-		1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKKKKVC.swift; sourceTree = "<group>"; };
 		1AA993A51CB089C7007A8D4E /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuCell.swift; sourceTree = "<group>"; };
 		1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInfosDetailVC.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				1AA993A71CB0AA73007A8D4E /* LeftMenuCell.swift */,
 				1AAFD9AB1CB7169C00BE9BB2 /* ServiceInfosDetailVC.swift */,
 				1A02B5891CC743C50038CD58 /* timesCollectionViewCell.swift */,
-				1AA3E2291CCEDDD900DDC2FE /* KKKKKVC.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -391,7 +388,6 @@
 				1AC98BD11CA1D8CC00680A79 /* ReceiptsViewController.swift in Sources */,
 				1ACAB1ED1CD00A020015626D /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				1C93CAAF1C7FADA300B43CB3 /* SignUpViewController.swift in Sources */,
-				1AA3E22A1CCEDDD900DDC2FE /* KKKKKVC.swift in Sources */,
 				1A6FD1AE1CBDD43300CADAF4 /* Appointment.swift in Sources */,
 				1AFA9CAC1C9DFF17003C9E11 /* LeftMenuViewController.swift in Sources */,
 				1AA993A81CB0AA73007A8D4E /* LeftMenuCell.swift in Sources */,
